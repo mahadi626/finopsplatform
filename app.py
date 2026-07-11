@@ -1,20 +1,4 @@
-import streamlit as st
-import requests
-import pandas as pd
-st.title("Autonomous FinOps & Governance Platform")
-user_query = st.text_input("Ask anything about cloud cost optimization:", "Give me one quick cloud cost saving tip.")
-uploaded_file = st.file_uploader("Upload your cloud bill(csv file):", type=["csv"])
-if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file, sep=",")
-    st.subheader("Cloud Spend Analytics Dashboard")
-    st.metric(label="Total Cloud Spend",value="$14,250", delta="+40%")
-    st.bar_chart(df)
-    user_query += "\nBill data: " + uploaded_file.getvalue().decode("utf-8")[:1000]
-if st.button("Analyze & Optimize"):
-    url = "http://localhost:11434/api/generate"
-    data = {"model": "llama3", "prompt": user_query, "stream": False}
-    st.info("FinOps AI Engine is analyzing... Please wait...")
-    response = requests.post(url, json=data).json().get("response")
-    st.success ("=== FinOps AI Recommendation ===")
-    st.write (response)
+import pandas as pd import requests import streamlit as st correct_username = "admin" correct_password = "password123" if "logged_in" not in st.session_state: st.session_state.logged_in = False if not st.session_state.logged_in: st.subheader("🔑 Enterprise Secure Login") username = st.text_input("Username:") password = st.text_input("Password:", type="password") if st.button("Login"): if username == correct_username and password == correct_password: st.session_state.logged_in = True st.success("Successfully Logged In!") st.rerun() else: st.error("Invalid Username or Password. Please try again.") st.stop() st.title("Autonomous FinOps & Governance Platform") user_query = st.text_input("Ask anything about cloud cost optimization:", placeholder="Give me one quick cloud cost saving tip.") uploaded_file = st.file_uploader("Upload your cloud bill (csv file):", type=["csv"]) if uploaded_file is not None: df = pd.read_csv(uploaded_file, sep=",") st.subheader("Cloud Spend Analytics Dashboard") if "Service" in df.columns and "Cost" in df.columns: total_cost = df["Cost"].sum() st.metric(label="Total Cloud Spend Found", value=f"${total_cost:,.2f}", delta="+40%") st.subheader("📊 New Dynamic Cost Breakdown") st.bar_chart(data=df, x="Service", y="Cost") else: st.metric(label="Total Cloud Spend", value="$14,250", delta="+40%") st.bar_chart(df) user_query += "\nBill data: " + uploaded_file.getvalue().decode("utf-8")[:1000] if st.button("Analyze & Optimize"): st.subheader("🤖 Llama 3 Autonomous Analysis (Cloud AI):") url = "https://groq.com" headers = { "Authorization": f"Bearer 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", "Content-Type": "application/json" } payload = { "model": "llama3-8b-8192", "messages": [{"role": "user", "content": user_query}], "stream": False } with st.spinner("FinOps AI Engine is analyzing via Global Cloud... Please wait..."): try: response = requests.post(url, headers=headers, json=payload) result = response.json() st.write(result["choices"]["message"]["content"]) st.success("Analysis Completed Successfully via International Server!") except Exception as e: st.error(f"Error connecting to International Cloud AI: {e}")
+
+
 
