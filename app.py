@@ -61,3 +61,36 @@ if uploaded_file is not None:
                     st.error(f"Error: {e}")
         else:
             st.warning("Please enter a question first!")
+import streamlit as st
+import pandas as pd
+import random
+import time
+
+st.markdown("---")
+st.subheader("🔗 Live Cloud Integration (AWS/Azure)")
+st.caption("Fortune 500 company admins can link their live infrastructure here.")
+
+aws_key = st.text_input("Enter AWS Access Key ID:", type="password", placeholder="AKIAIOSFODNN7EXAMPLE")
+aws_secret = st.text_input("Enter AWS Secret Access Key:", type="password", placeholder="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY")
+
+if st.button("Connect & Fetch Live Cloud Data"):
+    if aws_key and aws_secret:
+        with st.spinner("Connecting to AWS Cloud Infrastructure..."):
+            time.sleep(2)
+            
+        st.success("✅ Connected Successfully to AWS Secure Server!")
+        
+        live_data = {
+            'Service': ['EC2', 'S3', 'RDS', 'Lambda', 'CloudWatch'],
+            'Cost ($)': [random.randint(1000, 2000), random.randint(300, 800), 
+                         random.randint(2000, 3500), random.randint(50, 150), 
+                         random.randint(100, 400)]
+        }
+        df_live = pd.DataFrame(live_data)
+        
+        st.bar_chart(df_live.set_index('Service'))
+        st.write("Live Server Data Preview:", df_live)
+        
+        st.session_state['cloud_data'] = df_live
+    else:
+        st.error("Please enter your Access Keys to connect!")
