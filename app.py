@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pandas as pd
 import random
@@ -14,67 +15,90 @@ if 'logged_in' not in st.session_state:
 
 st.markdown("""
 <style>
+@import url('https://googleapis.com');
+
 .stApp {
-    background: radial-gradient(circle at center, #0d1527 0%, #030712 100%) !important;
+    background: radial-gradient(circle at center, #0c111d 0%, #020408 100%) !important;
 }
 [data-testid="stSidebar"] {
-    background-color: rgba(6, 9, 22, 0.9) !important;
+    background-color: rgba(4, 6, 10, 0.95) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 .main-card {
-    background: rgba(30, 41, 59, 0.4);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 24px;
-    padding: 40px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    padding: 45px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
     text-align: center;
     margin-bottom: 30px;
 }
 .gate-title {
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
-    background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 38px;
-    letter-spacing: -1px;
-    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    color: #ffffff;
+    font-size: 32px;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+    margin-bottom: 12px;
 }
 .gate-subtitle {
-    color: #94a3b8;
-    font-size: 15px;
+    color: #64748b;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
     margin-bottom: 35px;
 }
 .sso-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
-    padding: 12px;
-    color: #e2e8f0;
+    padding: 14px;
+    color: #f1f5f9;
     font-weight: 600;
     font-size: 14px;
     margin-bottom: 12px;
+    letter-spacing: 0.5px;
 }
 .divider {
-    color: #475569;
-    font-size: 11px;
+    color: #334155;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 2px;
-    margin: 25px 0;
+    letter-spacing: 4px;
+    margin: 30px 0;
 }
-.ferrari-header {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    background: linear-gradient(90deg, #ffffff 0%, #cbd5e1 50%, #64748b 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 42px;
-    letter-spacing: -1px;
+.bugatti-script-title {
+    font-family: 'Monsieur La Douise', cursive;
+    color: #ffffff;
+    font-size: 85px;
+    font-weight: 400;
+    line-height: 0.8;
+    margin-bottom: 5px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+.bugatti-sub-header {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+.luxury-container {
+    background: rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 div.stButton > button {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
@@ -86,8 +110,9 @@ div.stButton > button {
     transition: all 0.3s ease !important;
 }
 div.stButton > button:hover {
-    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%) !important;
-    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3) !important;
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%) !important;
+    color: #020408 !important;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2) !important;
     border-color: transparent !important;
     transform: translateY(-1px) !important;
 }
@@ -96,11 +121,10 @@ div.stButton > button:hover {
 
 if not st.session_state['logged_in']:
     col1, col2, col3 = st.columns([1, 1.8, 1])
-    
     with col2:
         st.markdown("""
         <div class='main-card'>
-            <div class='gate-title'>💎 FORTUNE 500 SECURE GATEWAY</div>
+            <div class='gate-title'>FORTUNE 500 SECURE GATEWAY</div>
             <div class='gate-subtitle'>Autonomous FinOps & Cloud Governance Infrastructure Ver 3.0</div>
             <div class='sso-button'>
                 <img src='https://wikimedia.org_\"G\"_logo.svg' style='width: 18px; margin-right: 12px;'/>
@@ -145,10 +169,11 @@ else:
     else:
         st.error("API Key not found in secrets!")
 
-    st.markdown("<div class='ferrari-header'>💼 Autonomous FinOps & Cloud Governance Platform</div>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #64748b; font-size: 16px; margin-top: -10px;'>High-Performance Cloud Spend Ingestion, Infrastructure Synchronization & AI Insights</p>", unsafe_allow_html=True)
+    st.markdown("<div class='bugatti-script-title'>FinOps Platform</div>", unsafe_allow_html=True)
+    st.markdown("<div class='bugatti-sub-header'>Autonomous FinOps & Cloud Governance</div>", unsafe_allow_html=True)
     st.markdown("---")
 
+    st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
     st.markdown("### Step 1: Provide Cloud Spend Data")
     uploaded_file = st.file_uploader("Upload your Cloud Spend CSV file", type=["csv"])
 
@@ -157,9 +182,9 @@ else:
         st.session_state['cloud_data'] = df
         st.success("✅ CSV File Uploaded Successfully!")
         st.dataframe(df, use_container_width=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
-    st.markdown("---")
-
+    st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
     st.markdown("### Live Cloud Integration (AWS/Azure Simulation)")
     st.caption("Fortune 500 company admins can link their live infrastructure here.")
 
@@ -186,9 +211,9 @@ else:
             st.write("📊 *Live Server Data Preview:*", df_live)
         else:
             st.error("Please enter your Access Keys to connect!")
+    st.markdown("</div>", unsafe_allow_html=True)
 
-    st.markdown("---")
-
+    st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
     st.markdown("### 🤖 Ask Gemini AI about your Cloud Data")
     user_question = st.text_input("Ask a question about your data:", placeholder="e.g., Which service is costing me the most?")
 
@@ -215,3 +240,4 @@ else:
                 st.error("Please upload a CSV file or connect to Live Cloud first to generate data!")
         else:
             st.warning("Please enter a question first!")
+    st.markdown("</div>", unsafe_allow_html=True)
