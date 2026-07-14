@@ -1,73 +1,32 @@
-import pandas as pd
-import requests
 import streamlit as st
+import pandas as pd
+import random
+import time
 import google.generativeai as genai
 
-GOOGLE_API_KEY = "YOUR_SECRET_KEY_HERE"
-genai.configure(api_key=GOOGLE_API_KEY)
+st.set_page_config(page_title="Autonomous FinOps Platform", layout="wide")
 
-correct_username = "admin"
-correct_password = "password123"
+if "GEMINI_API_KEY" in st.secrets:
+    genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+    model = genai.GenerativeModel('gemini-1.5-flash')
+else:
+    st.error("API Key not found in secrets!")
 
-if "logged_in" not in st.session_state:
-    st.session_state.logged_in = False
+st.title("💼 Autonomous FinOps & Cloud Governance Platform")
 
-if not st.session_state.logged_in:
-    st.subheader("🔒 Enterprise Secure Login")
-    username = st.text_input("Username:")
-    password = st.text_input("Password:", type="password")
-    
-    if st.button("Login"):
-        if username == correct_username and password == correct_password:
-            st.session_state.logged_in = True
-            st.success("Successfully Logged In!")
-            st.rerun()
-        else:
-            st.error("Invalid Username or Password. Please try again.")
-    st.stop()
-
-st.title("Autonomous FinOps & Governance Platform")
+st.subheader("📁 Step 1: Provide Cloud Spend Data")
 
 uploaded_file = st.file_uploader("Upload your Cloud Spend CSV file", type=["csv"])
 
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
-    st.write("Data Preview:", df.head())
-    
-    if "Service" in df.columns and "Cost" in df.columns:
-        total_cost = df["Cost"].sum()
-        st.metric(label="Total Cloud Spend Found", value=f"${total_cost:,.2f}")
-        
-        st.subheader("New Dynamic Cost Breakdown")
-        st.bar_chart(data=df, x="Service", y="Cost")
-    else:
-        st.metric(label="Total Cloud Spend", value="$14,250", delta="Sample Data")
-        st.bar_chart(df)
-        
-    st.subheader("🤖 Ask Gemini AI about your Cloud Data")
-    user_query = st.text_input("Ask a question about your data:")
-    
-    if st.button("Analyze & Optimize", key="analyze_button"):
-        if user_query:
-            with st.spinner("Gemini is analyzing your data..."):
-                try:
-                    csv_data_string = df.to_string(index=False)
-                    model = genai.GenerativeModel('gemini-1.5-flash')
-                    prompt = f"Here is the cloud budget data:\n\n{csv_data_string}\n\nUser Question: {user_query}\n\nPlease analyze the data and provide actionable optimization recommendations."
-                    response = model.generate_content(prompt)
-                    st.success("AI Analysis Results:")
-                    st.write(response.text)
-                except Exception as e:
-                    st.error(f"Error: {e}")
-        else:
-            st.warning("Please enter a question first!")
-import streamlit as st
-import pandas as pd
-import random
-import time
+    st.session_state['cloud_data'] = df
+    st.success("✅ CSV File Uploaded Successfully!")
+    st.dataframe(df)
 
 st.markdown("---")
-st.subheader("🔗 Live Cloud Integration (AWS/Azure)")
+
+st.subheader("🔗 Live Cloud Integration (AWS/Azure Simulation)")
 st.caption("Fortune 500 company admins can link their live infrastructure here.")
 
 aws_key = st.text_input("Enter AWS Access Key ID:", type="password", placeholder="AKIAIOSFODNN7EXAMPLE")
@@ -87,10 +46,38 @@ if st.button("Connect & Fetch Live Cloud Data"):
                          random.randint(100, 400)]
         }
         df_live = pd.DataFrame(live_data)
+        st.session_state['cloud_data'] = df_live
         
         st.bar_chart(df_live.set_index('Service'))
         st.write("Live Server Data Preview:", df_live)
-        
-        st.session_state['cloud_data'] = df_live
     else:
         st.error("Please enter your Access Keys to connect!")
+
+st.markdown("---")
+
+st.subheader("🤖 Ask Gemini AI about your Cloud Data")
+user_question = st.text_input("Ask a question about your data:", placeholder="e.g., Which service is costing me the most?")
+
+if st.button("Analyze & Optimize"):
+    if user_question:
+        if 'cloud_data' in st.session_state:
+            data_to_send = st.session_state['cloud_data'].to_string()
+            
+            with st.spinner("Gemini AI is analyzing your data..."):
+                try:
+                    full_prompt = f"""
+                    You are an expert Cloud FinOps Consultant. 
+                    Analyze this cloud spending data and provide cost optimization tips based on the user's question:
+                    {data_to_send}
+                    
+                    User Question: {user_question}
+                    """
+                    response = model.generate_content(full_prompt)
+                    st.markdown("### 💡 Gemini AI Insights:")
+                    st.write(response.text)
+                except Exception as e:
+                    st.error(f"Error calling Gemini API: {e}")
+        else:
+            st.error("Please upload a CSV file or connect to Live Cloud first to generate data!")
+    else:
+        st.warning("Please enter a question first!")
