@@ -13,42 +13,101 @@ if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
 
 if not st.session_state['logged_in']:
-    st.markdown("<h1 style='text-align: center;'>🔐 Fortune 500 Enterprise Secure Gate</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: gray;'>Sign in to access Autonomous FinOps & Cloud Governance Platform</p>", unsafe_allow_html=True)
+    st.markdown("""
+    <style>
+    .stApp {
+        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #020617 100%) !important;
+    }
+    .main-card {
+        background: rgba(30, 41, 59, 0.4);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .gate-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 800;
+        background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 38px;
+        letter-spacing: -1px;
+        margin-bottom: 10px;
+    }
+    .gate-subtitle {
+        color: #94a3b8;
+        font-size: 15px;
+        margin-bottom: 35px;
+    }
+    .sso-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 12px;
+        color: #e2e8f0;
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+    .divider {
+        color: #475569;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin: 25px 0;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    col1, col2, col3 = st.columns([1, 1.8, 1])
     
-    col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         st.markdown("""
-        <div style='background-color: #ffffff; border: 1px solid #dadce0; border-radius: 4px; padding: 10px; text-align: center; margin-bottom: 20px;'>
-            <img src='https://wikimedia.org_\"G\"_logo.svg' style='width: 20px; margin-right: 10px; vertical-align: middle;'/>
-            <span style='font-family: Roboto,arial,sans-serif; font-weight: 500; color: #3c4043; vertical-align: middle;'>Continue with Google Workspace (Gmail)</span>
+        <div class='main-card'>
+            <div class='gate-title'>🔑 FORTUNE 500 SECURE GATEWAY</div>
+            <div class='gate-subtitle'>Autonomous FinOps & Cloud Governance Infrastructure Ver 3.0</div>
+            <div class='sso-button'>
+                <img src='https://wikimedia.org_\"G\"_logo.svg' style='width: 18px; margin-right: 12px;'/>
+                Google Workspace SSO Secured
+            </div>
+            <div class='sso-button'>
+                <img src='https://wikimedia.org' style='width: 18px; margin-right: 12px;'/>
+                Microsoft Azure AD Certified
+            </div>
+            <div class='sso-button'>
+                <img src='https://wikimedia.org' style='width: 22px; margin-right: 12px; filter: brightness(0) invert(1);'/>
+                AWS IAM Role Integration
+            </div>
+            <div class='divider'>— OR ENTER ENTERPRISE PASSPORT —</div>
         </div>
         """, unsafe_allow_html=True)
         
-        if st.button("⚡ Click here to Bypass with Google Test SSO Account", use_container_width=True):
-            with st.spinner("Authenticating with Google Enterprise Server..."):
-                time.sleep(1.5)
-            st.session_state['logged_in'] = True
-            st.success("Google SSO Authenticated! Loading platform...")
-            time.sleep(1)
-            st.rerun()
-
-        st.markdown("<div style='text-align: center; margin: 15px 0; color: gray;'>— OR USE BUSINESS ACCOUNT —</div>", unsafe_allow_html=True)
+        username_input = st.text_input("💎 Corporate Username:", placeholder="Enter corporate username")
+        password_input = st.text_input("🔒 Cryptographic Password:", type="password", placeholder="Enter secure password")
         
-        username_input = st.text_input("Username:")
-        password_input = st.text_input("Password:", type="password")
+        st.markdown("<br>", unsafe_allow_html=True)
         
-        if st.button("Sign In with Password", use_container_width=True):
+        if st.button("🚀 INITIALIZE QUANTUM DEPLOYMENT", use_container_width=True):
             if username_input == VALID_USERNAME and password_input == VALID_PASSWORD:
                 st.session_state['logged_in'] = True
-                st.success("Access Granted! Opening dashboard...")
-                time.sleep(1)
+                with st.spinner("Decrypting Security Core & Syncing Infrastructure..."):
+                    time.sleep(2)
+                st.success("Access Granted! Opening Dashboard...")
+                time.sleep(0.5)
                 st.rerun()
             else:
-                st.error("Access Denied! Invalid Username or Enterprise Password.")
+                st.error("Authentication Failure! Invalid Credentials.")
 
 else:
-    if st.sidebar.button("Logout 🚪"):
+    if st.sidebar.button("Logout From Core 🚪"):
         st.session_state['logged_in'] = False
         st.rerun()
 
@@ -59,7 +118,6 @@ else:
         st.error("API Key not found in secrets! Please check your secrets.toml file.")
 
     st.title("💼 Autonomous FinOps & Cloud Governance Platform")
-
     st.subheader("📁 Step 1: Provide Cloud Spend Data")
 
     uploaded_file = st.file_uploader("Upload your Cloud Spend CSV file", type=["csv"])
@@ -127,3 +185,4 @@ else:
                 st.error("Please upload a CSV file or connect to Live Cloud first to generate data!")
         else:
             st.warning("Please enter a question first!")
+
