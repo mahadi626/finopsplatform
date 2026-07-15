@@ -193,6 +193,7 @@ else:
     st.markdown("<div class='bugatti-sub-header'>Autonomous FinOps & Cloud Governance</div>", unsafe_allow_html=True)
     st.markdown("---")
 
+    # 🔒 [FEATURE 1] Security Isolation Wall (Multi-tenant Data Isolation)
     st.sidebar.markdown("### 🔒 Security Isolation Wall")
     company_select = st.sidebar.text_input("Enter Fortune 500 Enterprise:", value="Apple Inc.")
     st.sidebar.info(f"✔ Active Tenant Isolation: Live cryptographic vault is locked exclusively for {company_select}. Cross-tenant data leakage protected.")
@@ -200,12 +201,8 @@ else:
     if company_select:
         if company_select not in st.session_state['tenant_db']:
             random.seed(company_select)
-            # 🔮 এখানে চ্যাট অ্যাপের ট্রিক এড়াতে সংখ্যা এবং টেক্সট একদম ফ্রেশ মেকানিজমে ডিফাইন করা হলো
-            val_part1 = "9"
-            val_part2 = "8"
-            combined_val = float(val_part1 + "." + val_part2)
             st.session_state['tenant_db'][company_select] = {
-                'saved_amt': round(random.uniform(1.2, combined_val), 2),
+                'efficiency_score': random.randint(85, 99),
                 'ec2': random.randint(800, 2500),
                 's3': random.randint(200, 900),
                 'rds': random.randint(1500, 4000),
@@ -213,7 +210,9 @@ else:
                 'cw': random.randint(80, 500)
             }
         comp_data = st.session_state['tenant_db'][company_select]
-        st.markdown(f"<div class='roi-card'><h3 style='color: #22c55e; margin: 0; font-size: 16px; letter-spacing: 2px; text-transform: uppercase;'>🔒 CAPITAL OPTIMIZATION REAL-TIME SHOWCASE PANEL</h3><h1 style='color: #ffffff; font-size: 36px; margin: 10px 0; font-weight: 900;'>${comp_data['saved_amt']} Million Dollars Optimized</h1><p style='color: #94a3b8; margin: 0; font-size: 14px;'>This matrix layer prevents structural budget overhead across active cloud layers for <b>{company_select}</b>.</p></div>", unsafe_allow_html=True)
+        
+        # 📊 [FEATURE 2] CAPITAL OPTIMIZATION REAL-TIME SHOWCASE PANEL (ROI)
+        st.markdown(f"<div class='roi-card'><h3 style='color: #22c55e; margin: 0; font-size: 16px; letter-spacing: 2px; text-transform: uppercase;'>🔒 CAPITAL OPTIMIZATION REAL-TIME SHOWCASE PANEL</h3><h1 style='color: #ffffff; font-size: 36px; margin: 10px 0; font-weight: 900;'>Enterprise Optimization Level: Ultra-Premium Active V3</h1><p style='color: #94a3b8; margin: 0; font-size: 14px;'>This matrix layer prevents structural budget overhead across active cloud layers for <b>{company_select}</b>.</p></div>", unsafe_allow_html=True)
 
     st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
     st.markdown("### Step 1: Provide Cloud Spend Data")
@@ -246,3 +245,4 @@ else:
     st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
+    st.markdown("### 🤖 Ask Gemini AI about your Cloud Data")
