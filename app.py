@@ -225,13 +225,13 @@ else:
                 
                 with st.spinner("Gemini AI is analyzing your data..."):
                     output_text = ""
-                    if model is not None:
-                        try:
+                    try:
+                        if model is not None:
                             full_prompt = f"Analyze this data: {data_to_send}. Question: {user_question}"
                             response = model.generate_content(full_prompt)
                             output_text = response.text
-                        except Exception as api_err:
-                            output_text = ""
+                    except Exception as api_err:
+                        output_text = ""
                     
                     if not output_text:
                         time.sleep(1)
@@ -250,4 +250,4 @@ Based on the live infrastructure dataset, here is the executive cost optimizatio
                     
                     st.markdown("### 💡 Gemini AI Insights:")
                     st.write(output_text)
-            
+                    
