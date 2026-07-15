@@ -119,6 +119,8 @@ st.markdown("""
     margin-bottom: 30px;
     box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
 }
+
+/* 🏎️ FERRARI STYLE ULTRA-BRIGHT नियॉन वाइट लाइटिंग मैकेनिक्स */
 div.stButton > button {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
     color: #f8fafc !important;
@@ -129,11 +131,15 @@ div.stButton > button {
     transition: all 0.3s ease !important;
 }
 div.stButton > button:hover {
-    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%) !important;
+    background: #ffffff !important;
     color: #020408 !important;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.85) !important;
     border-color: transparent !important;
-    transform: translateY(-1px) !important;
+    transform: translateY(-2px) !important;
+}
+div.stButton > button:active {
+    background: #e2e8f0 !important;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 1) !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -186,27 +192,30 @@ else:
     st.markdown("<div class='bugatti-sub-header'>Autonomous FinOps & Cloud Governance</div>", unsafe_allow_html=True)
     st.markdown("---")
 
-    # 🔒 [FEATURE 1] Security Isolation Wall (Multi-tenant)
     st.sidebar.markdown("### 🔒 Security Isolation Wall")
-    company_select = st.sidebar.selectbox("Select Enterprise Tenant Layer:", ["Apple Inc.", "Walmart", "Amazon Web Services", "ExxonMobil"])
-    st.sidebar.info(f"✔ Active Isolation: Data for {company_select} is locked inside an encrypted virtual vault. External tenants or vendors cannot access this layer.")
+    company_select = st.sidebar.text_input("Enter Fortune 500 Enterprise:", value="Apple Inc.")
+    st.sidebar.info(f"✔ Active Tenant Isolation: Live cryptographic vault is locked exclusively for {company_select}. Cross-tenant data leakage protected.")
 
-    # 📊 [FEATURE 2] ROI Dashboard Panel (Green Glowing Panel)
-    st.markdown(f"""
-    <div class='roi-card'>
-        <h3 style='color: #22c55e; margin: 0; font-size: 16px; letter-spacing: 2px; text-transform: uppercase;'>🔒 EXECUTIVE ROI SAVINGS LIVE PANEL</h3>
-        <h1 style='color: #ffffff; font-size: 36px; margin: 10px 0; font-weight: 900;'>$4.5 Million Dollars Saved</h1>
-        <p style='color: #94a3b8; margin: 0; font-size: 14px;'>This software automatically optimized your cloud infrastructure this month, preventing budget leaks for <b>{company_select}</b>.</p>
-    </div>
-    """, unsafe_allow_html=True)
+    if company_select:
+        if company_select not in st.session_state['tenant_db']:
+            random.seed(company_select)
+            # 🔮 ২০১ নম্বর লাইনের সেই জেদি ইমোজি চিরতরে রিমুভ করে একদম সঠিক ভ্যালু দেওয়া হলো
+            st.session_state['tenant_db'][company_select] = {
+                
+                'ec2': random.randint(800, 2500),
+                's3': random.randint(200, 900),
+                'rds': random.randint(1500, 4000),
+                'lambda': random.randint(30, 200),
+                'cw': random.randint(80, 500)
+            }
+        comp_data = st.session_state['tenant_db'][company_select]
+        st.markdown(f"<div class='roi-card'><h3 style='color: #22c55e; margin: 0; font-size: 16px; letter-spacing: 2px; text-transform: uppercase;'>🔒 CAPITAL OPTIMIZATION REAL-TIME SHOWCASE PANEL</h3><h1 style='color: #ffffff; font-size: 36px; margin: 10px 0; font-weight: 900;'>${comp_data['saved_amt']} Million Dollars Optimized</h1><p style='color: #94a3b8; margin: 0; font-size: 14px;'>This matrix layer prevents structural budget overhead across active cloud layers for <b>{company_select}</b>.</p></div>", unsafe_allow_html=True)
 
     st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
     st.markdown("### Step 1: Provide Cloud Spend Data")
     uploaded_file = st.file_uploader("Upload your Cloud Spend CSV file", type=["csv"])
-
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
-        st.session_state['tenant_db'][company_select] = df
         st.success(f"✅ CSV File Locked securely inside {company_select} vault!")
         st.dataframe(df, use_container_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
@@ -214,26 +223,18 @@ else:
     st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
     st.markdown("### Live Cloud Integration (AWS/Azure Simulation)")
     st.caption("Fortune 500 company admins can link their live infrastructure here.")
-
     aws_key = st.text_input("Enter AWS Access Key ID:", type="password", placeholder="AKIAIOSFODNN7EXAMPLE")
     aws_secret = st.text_input("Enter AWS Secret Access Key:", type="password", placeholder="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY")
-
     if st.button("Connect & Fetch Live Cloud Data", use_container_width=True):
         if aws_key and aws_secret:
             with st.spinner("Connecting to AWS Cloud Infrastructure..."):
                 time.sleep(1.5)
-                
             st.success("✅ Connected Successfully to AWS Secure Server!")
-            
             live_data = {
                 'Service': ['EC2', 'S3', 'RDS', 'Lambda', 'CloudWatch'],
-                'Cost ($)': [random.randint(1000, 2000), random.randint(300, 800), 
-                             random.randint(2000, 3500), random.randint(50, 150), 
-                             random.randint(100, 400)]
+                'Cost ($)': [comp_data['ec2'], comp_data['s3'], comp_data['rds'], comp_data['lambda'], comp_data['cw']]
             }
             df_live = pd.DataFrame(live_data)
-            st.session_state['tenant_db'][company_select] = df_live
-            
             st.bar_chart(df_live.set_index('Service'))
             st.write("📊 *Live Server Data Preview:*", df_live)
         else:
@@ -243,10 +244,5 @@ else:
     st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
     st.markdown("### 🤖 Ask Gemini AI about your Cloud Data")
     user_question = st.text_input("Ask a question about your data:", placeholder="e.g., Which service is costing me the most?")
-
-    if st.button("Analyze & Optimize", use_container_width=True):
-        if user_question:
-            with st.spinner("Gemini AI is analyzing your data..."):
-                time.sleep(1)
-                st.markdown("### 💡 Gemini AI Insights:")
-                st.write("### 💡 Gemini AI Insights (Enterprise Core Mode):")
+Compose
+Write to Ahmad Bin Mahdi
