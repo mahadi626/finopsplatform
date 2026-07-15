@@ -13,6 +13,11 @@ VALID_PASSWORD = "Kvdwnf#Elite@FinOps$99"
 if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
 
+model = None
+if "GEMINI_API_KEY" in st.secrets:
+    genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+    model = genai.GenerativeModel('gemini-2.5-flash')
+
 st.markdown("""
 <style>
 @import url('https://googleapis.com');
@@ -163,10 +168,7 @@ else:
         st.session_state['logged_in'] = False
         st.rerun()
 
-    if "GEMINI_API_KEY" in st.secrets:
-        genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-        model = genai.GenerativeModel('gemini-1.5-flash')
-    else:
+    if "GEMINI_API_KEY" not in st.secrets:
         st.error("API Key not found in secrets!")
 
     st.markdown("<div class='bugatti-script-title'>FinOps Platform</div>", unsafe_allow_html=True)
@@ -222,20 +224,23 @@ else:
             if 'cloud_data' in st.session_state:
                 data_to_send = st.session_state['cloud_data'].to_string()
                 
-                with st.spinner("Gemini AI is analyzing your data..."):
-                    try:
-                        full_prompt = f"""
-                        You are an expert Cloud FinOps Consultant for Fortune 500 CEOs. 
-                        Analyze this cloud spending data and provide elite, corporate cost optimization tips based on the user's question:
-                        {data_to_send}
-                        
-                        User Question: {user_question}
-                        """
-                        response = model.generate_content(full_prompt)
-                        st.markdown("### 💡 Gemini AI Insights:")
-                        st.write(response.text)
-                    except Exception as e:
-                        st.error(f"Error calling Gemini API: {e}")
+                if model is not None:
+                    with st.spinner("Gemini AI is analyzing your data..."):
+                        try:
+                            full_prompt = f"""
+                            You are an expert Cloud FinOps Consultant for Fortune 500 CEOs. 
+                            Analyze this cloud spending data and provide elite, corporate cost optimization tips based on the user's question:
+                            {data_to_send}
+                            
+                            User Question: {user_question}
+                            """
+                            response = model.generate_content(full_prompt)
+                            st.markdown("### 💡 Gemini AI Insights:")
+                            st.write(response.text)
+                        except Exception as e:
+                            st.error(f"Error calling Gemini API: {e}")
+                else:
+                    st.error("Gemini AI model core is not initialized. Please check secrets.")
             else:
                 st.error("Please upload a CSV file or connect to Live Cloud first to generate data!")
         else:
