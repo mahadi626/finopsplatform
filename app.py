@@ -120,7 +120,7 @@ st.markdown("""
     box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
 }
 
-/* 🏎️ FERRARI STYLE ULTRA-BRIGHT नियॉन वाइट लाइटिंग मैकेनिक्स */
+/* 🏎️ FERRARI STYLE ULTRA-BRIGHT HYPER-GLOW LIGHT MECHANICS */
 div.stButton > button {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
     color: #f8fafc !important;
@@ -128,18 +128,19 @@ div.stButton > button {
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 10px !important;
     padding: 12px 24px !important;
-    transition: all 0.3s ease !important;
+    transition: all 0.2s ease-in-out !important;
 }
 div.stButton > button:hover {
     background: #ffffff !important;
     color: #020408 !important;
-    box-shadow: 0 0 40px rgba(255, 255, 255, 0.85) !important;
+    box-shadow: 0 0 50px 15px rgba(255, 255, 255, 0.95) !important;
     border-color: transparent !important;
     transform: translateY(-2px) !important;
 }
 div.stButton > button:active {
-    background: #e2e8f0 !important;
-    box-shadow: 0 0 50px rgba(255, 255, 255, 1) !important;
+    background: #f1f5f9 !important;
+    box-shadow: 0 0 70px 25px rgba(255, 255, 255, 1) !important;
+    transform: translateY(0px) !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -199,9 +200,12 @@ else:
     if company_select:
         if company_select not in st.session_state['tenant_db']:
             random.seed(company_select)
-            # 🔮 ২০১ নম্বর লাইনের সেই জেদি ইমোজি চিরতরে রিমুভ করে একদম সঠিক ভ্যালু দেওয়া হলো
+            # 🔮 এখানে চ্যাট অ্যাপের ট্রিক এড়াতে সংখ্যা এবং টেক্সট একদম ফ্রেশ মেকানিজমে ডিফাইন করা হলো
+            val_part1 = "9"
+            val_part2 = "8"
+            combined_val = float(val_part1 + "." + val_part2)
             st.session_state['tenant_db'][company_select] = {
-                
+                'saved_amt': round(random.uniform(1.2, combined_val), 2),
                 'ec2': random.randint(800, 2500),
                 's3': random.randint(200, 900),
                 'rds': random.randint(1500, 4000),
@@ -242,7 +246,3 @@ else:
     st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
-    st.markdown("### 🤖 Ask Gemini AI about your Cloud Data")
-    user_question = st.text_input("Ask a question about your data:", placeholder="e.g., Which service is costing me the most?")
-Compose
-Write to Ahmad Bin Mahdi
