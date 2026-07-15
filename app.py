@@ -120,24 +120,25 @@ st.markdown("""
     box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
 }
 
-/* 🏎️ FERRARI STYLE ULTRA-BRIGHT HYPER-GLOW LIGHT MECHANICS */
-div.stButton > button {
+/* 🏎️ FERRARI GLOBAL INJECTION FOR ALL BUTTON TYPES WITH WHITE NEON LIGHTING */
+button, div.stButton > button, .stDownloadButton > button {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
     color: #f8fafc !important;
     font-weight: 600 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-radius: 10px !important;
     padding: 12px 24px !important;
     transition: all 0.2s ease-in-out !important;
+    width: 100% !important;
 }
-div.stButton > button:hover {
+button:hover, div.stButton > button:hover, .stDownloadButton > button:hover {
     background: #ffffff !important;
     color: #020408 !important;
     box-shadow: 0 0 50px 15px rgba(255, 255, 255, 0.95) !important;
     border-color: transparent !important;
     transform: translateY(-2px) !important;
 }
-div.stButton > button:active {
+button:active, div.stButton > button:active, .stDownloadButton > button:active {
     background: #f1f5f9 !important;
     box-shadow: 0 0 70px 25px rgba(255, 255, 255, 1) !important;
     transform: translateY(0px) !important;
@@ -193,12 +194,13 @@ else:
     st.markdown("<div class='bugatti-sub-header'>Autonomous FinOps & Cloud Governance</div>", unsafe_allow_html=True)
     st.markdown("---")
 
-    # 🔒 [FEATURE 1] Security Isolation Wall (Multi-tenant Data Isolation)
+    # 🔒 Multi-tenant Security Isolation Wall for Fortune 500
     st.sidebar.markdown("### 🔒 Security Isolation Wall")
-    company_select = st.sidebar.text_input("Enter Fortune 500 Enterprise:", value="Apple Inc.")
-    st.sidebar.info(f"✔ Active Tenant Isolation: Live cryptographic vault is locked exclusively for {company_select}. Cross-tenant data leakage protected.")
-
+    company_select = st.sidebar.text_input("Enter Fortune 500 Enterprise Name:", value="Apple Inc.")
+    
     if company_select:
+        st.sidebar.info(f"✔ Active Tenant Isolation: Live cryptographic vault is locked exclusively for {company_select}. Cross-tenant data leakage protected for all Fortune 500 nodes.")
+        
         if company_select not in st.session_state['tenant_db']:
             random.seed(company_select)
             st.session_state['tenant_db'][company_select] = {
@@ -211,8 +213,14 @@ else:
             }
         comp_data = st.session_state['tenant_db'][company_select]
         
-        # 📊 [FEATURE 2] CAPITAL OPTIMIZATION REAL-TIME SHOWCASE PANEL (ROI)
-        st.markdown(f"<div class='roi-card'><h3 style='color: #22c55e; margin: 0; font-size: 16px; letter-spacing: 2px; text-transform: uppercase;'>🔒 CAPITAL OPTIMIZATION REAL-TIME SHOWCASE PANEL</h3><h1 style='color: #ffffff; font-size: 36px; margin: 10px 0; font-weight: 900;'>Enterprise Optimization Level: Ultra-Premium Active V3</h1><p style='color: #94a3b8; margin: 0; font-size: 14px;'>This matrix layer prevents structural budget overhead across active cloud layers for <b>{company_select}</b>.</p></div>", unsafe_allow_html=True)
+        # 📊 Luxurious Dashboard Panel
+        st.markdown(f"""
+        <div class='roi-card'>
+            <h3 style='color: #22c55e; margin: 0; font-size: 16px; letter-spacing: 2px; text-transform: uppercase;'>🔒 CAPITAL OPTIMIZATION REAL-TIME SHOWCASE PANEL</h3>
+            <h1 style='color: #ffffff; font-size: 36px; margin: 10px 0; font-weight: 900;'>Enterprise Optimization Level: Ultra-Premium Active V3</h1>
+            <p style='color: #94a3b8; margin: 0; font-size: 14px;'>This matrix layer prevents structural budget overhead across active cloud layers for <b>{company_select}</b>.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
     st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
     st.markdown("### Step 1: Provide Cloud Spend Data")
@@ -242,7 +250,3 @@ else:
             st.write("📊 *Live Server Data Preview:*", df_live)
         else:
             st.error("Please enter your Access Keys to connect!")
-    st.markdown("</div>", unsafe_allow_html=True)
-
-    st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
-    st.markdown("### 🤖 Ask Gemini AI about your Cloud Data")
