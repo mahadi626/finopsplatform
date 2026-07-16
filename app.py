@@ -289,7 +289,7 @@ Based on the live infrastructure dataset, here is the executive cost optimizatio
     # FEATURE 2: STRIPE B2B PORTAL
     st.markdown("<div class='luxury-container' style='border-color: #635bff;'>", unsafe_allow_html=True)
     st.markdown("<h3 style='color: #635bff;'>💳 Stripe B2B Portal</h3>", unsafe_allow_html=True)
-    col_stripe1, col_stripe2 = st.columns()
+    col_stripe1, col_stripe2 = st.columns(2)
     with col_stripe1:
         st.write(f"Your Fortune 500 Network ({selected_company}) is linked to *Stripe Custom Ledger v3* via secured smart contracts.")
     with col_stripe2:
