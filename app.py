@@ -120,22 +120,27 @@ st.markdown("""
     box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
 }
 
-/* 🏎️ FERRARI HOVER SYSTEM: REAL-TIME WHITE NEON LIGHT INTENSIFIED */
-div.stButton > button, button {
+/* 🏎️ FERRARI STYLE TRIPLE INJECTION FOR PERFECT WHITE GLOW OVERRIDE */
+div.stButton > button, button, [data-testid="baseButton-secondary"] {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
     color: #f8fafc !important;
     font-weight: 600 !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-radius: 10px !important;
     padding: 12px 24px !important;
     transition: all 0.2s ease-in-out !important;
 }
-div.stButton > button:hover, button:hover {
+div.stButton > button:hover, button:hover, [data-testid="baseButton-secondary"]:hover {
     background: #ffffff !important;
     color: #020408 !important;
-    box-shadow: 0 0 50px 20px rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 0 60px 25px rgba(255, 255, 255, 0.95) !important;
     border-color: transparent !important;
     transform: translateY(-2px) !important;
+}
+div.stButton > button:active, button:active, [data-testid="baseButton-secondary"]:active {
+    background: #e2e8f0 !important;
+    box-shadow: 0 0 80px 35px rgba(255, 255, 255, 1) !important;
+    transform: translateY(0px) !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -214,7 +219,6 @@ else:
     aws_key = st.text_input("Enter AWS Access Key ID:", type="password", placeholder="AKIAIOSFODNN7EXAMPLE")
     aws_secret = st.text_input("Enter AWS Secret Access Key:", type="password", placeholder="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY")
     
-    # ⚡ এখানে কন্ডিশন তুলে দেওয়া হলো, যাতে ডেটা ফেচ হোক আর না হোক, এআই সেকশন সবসময় স্ক্রিনে দৃশ্যমান থাকে!
     st.button("Connect & Fetch Live Cloud Data", use_container_width=True)
     
     live_data = {
@@ -226,7 +230,6 @@ else:
     st.write("📊 *Live Server Data Preview:*", df_live)
     st.markdown("</div>", unsafe_allow_html=True)
 
-    # 🤖 Gemini AI সেকশন এখন চিরস্থায়ীভাবে ওপেন থাকবে, কোনো হাইড অ্যান্ড সিক মেকানিজম নেই!
     st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
     st.markdown("### 🤖 Ask Gemini AI about your Cloud Data")
     user_question = st.text_input("Ask a question about your data:", placeholder="e.g., Which service is costing me the most?")
@@ -239,4 +242,3 @@ else:
             st.write("### 💡 Gemini AI Insights (Enterprise Core Mode):")
             st.write(f"Based on the live infrastructure dataset isolated for {company_select}, here is the executive cost optimization breakdown:")
             st.write(f"1. *Highest Cost Driver*: Your RDS (Relational Database Service) is currently consuming the largest share of the budget (${comp_data['rds']}).")
-            st.write("2. *Top 3 Actionable Cost Optimization Tips*:")
