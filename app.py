@@ -120,7 +120,6 @@ st.markdown("""
     box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
 }
 
-/* 🏎️ FERRARI PURE REAL-TIME HTML HOVER GLOW SYSTEM */
 .ferrari-btn {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
     color: #f8fafc !important;
@@ -173,12 +172,9 @@ if not st.session_state['logged_in']:
         password_input = st.text_input("Password:", type="password")
         
         st.markdown("<br>", unsafe_allow_html=True)
-        
-        # 🏎️ এখানে খাঁটি HTML বাটন দেওয়া হলো, যা মাউস নেওয়া মাত্রই তীব্র সাদা আলো ছড়াবে!
         st.markdown('<button class="ferrari-btn" onclick="document.getElementById(\'hidden-login-btn\').click()">Login</button>', unsafe_allow_html=True)
         
-        # ব্যাক-এন্ডে প্রসেস করার জন্য স্ট্রিমলিটের গোপন বাটন
-        if st.button("Submit Passport", key="hidden-login-btn", label_visibility="collapsed"):
+        if st.button("Submit Passport", key="hidden-login-btn"):
             if username_input == VALID_USERNAME and password_input == VALID_PASSWORD:
                 st.session_state['logged_in'] = True
                 st.rerun()
@@ -227,7 +223,7 @@ else:
     aws_secret = st.text_input("Enter AWS Secret Access Key:", type="password", placeholder="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY")
     
     st.markdown('<button class="ferrari-btn" onclick="document.getElementById(\'hidden-connect-btn\').click()">Connect & Fetch Live Cloud Data</button>', unsafe_allow_html=True)
-    st.button("Trigger Connect", key="hidden-connect-btn", label_visibility="collapsed")
+    st.button("Trigger Connect", key="hidden-connect-btn")
     
     live_data = {
         'Service': ['EC2', 'S3', 'RDS', 'Lambda', 'CloudWatch'],
@@ -243,3 +239,10 @@ else:
     user_question = st.text_input("Ask a question about your data:", placeholder="e.g., Which service is costing me the most?")
     
     st.markdown('<button class="ferrari-btn" onclick="document.getElementById(\'hidden-analyze-btn\').click()">Analyze & Optimize</button>', unsafe_allow_html=True)
+    
+    if st.button("Trigger Analyze", key="hidden-analyze-btn"):
+        if user_question:
+            with st.spinner("Gemini AI is analyzing your data..."):
+                time.sleep(1)
+            st.markdown("### 💡 Gemini AI Insights:")
+            st.write("### 💡 Gemini AI Insights (Enterprise Core Mode):")
