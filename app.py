@@ -169,6 +169,7 @@ else:
     if st.sidebar.button("Logout 🚪", use_container_width=True):
         st.session_state['logged_in'] = False
         st.rerun()
+        selected_company = st.sidebar.text_input("Enter Enterprise Tenant Name:", value="Apple Inc.", key="tenant_selector")
 
     st.markdown("<div class='bugatti-script-title'>FinOps Platform</div>", unsafe_allow_html=True)
     st.markdown("<div class='bugatti-sub-header'>Autonomous FinOps & Cloud Governance</div>", unsafe_allow_html=True)
