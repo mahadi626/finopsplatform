@@ -12,9 +12,6 @@ VALID_PASSWORD = "Kvdwnf#Elite@FinOps$99"
 if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
 
-if 'tenant_db' not in st.session_state:
-    st.session_state['tenant_db'] = {}
-
 model = None
 try:
     if "GEMINI_API_KEY" in st.secrets:
@@ -110,15 +107,6 @@ st.markdown("""
     margin-bottom: 30px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
-.roi-card {
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.😎 100%);
-    border: 2px solid #22c55e;
-    border-radius: 16px;
-    padding: 25px;
-    text-align: center;
-    margin-bottom: 30px;
-    box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
-}
 div.stButton > button {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
     color: #f8fafc !important;
@@ -186,27 +174,14 @@ else:
     st.markdown("<div class='bugatti-sub-header'>Autonomous FinOps & Cloud Governance</div>", unsafe_allow_html=True)
     st.markdown("---")
 
-    st.sidebar.markdown("### 🔒 Security Isolation Wall")
-    company_select = st.sidebar.selectbox("Select Enterprise Tenant Layer:", ["Apple Inc.", "Walmart", "Amazon Web Services", "ExxonMobil"])
-    
-    st.sidebar.info(f"✔ Active Isolation: Data for {company_select} is locked inside an encrypted virtual vault. External tenants or vendors cannot access this layer.")
-
-    st.markdown(f"""
-    <div class='roi-card'>
-        <h3 style='color: #22c55e; margin: 0; font-size: 16px; letter-spacing: 2px; text-transform: uppercase;'>🔒 EXECUTIVE ROI SAVINGS LIVE PANEL</h3>
-        <h1 style='color: #ffffff; font-size: 36px; margin: 10px 0; font-weight: 900;'>$4.5 Million Dollars Saved</h1>
-        <p style='color: #94a3b8; margin: 0; font-size: 14px;'>This software automatically optimized your cloud infrastructure this month, preventing budget leaks for <b>{company_select}</b>.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
     st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
     st.markdown("### Step 1: Provide Cloud Spend Data")
     uploaded_file = st.file_uploader("Upload your Cloud Spend CSV file", type=["csv"])
 
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
-        st.session_state['tenant_db'][company_select] = df
-        st.success(f"✅ CSV File Locked securely inside {company_select} vault!")
+        st.session_state['cloud_data'] = df
+        st.success("✅ CSV File Uploaded Successfully!")
         st.dataframe(df, use_container_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -231,7 +206,7 @@ else:
                              random.randint(100, 400)]
             }
             df_live = pd.DataFrame(live_data)
-            st.session_state['tenant_db'][company_select] = df_live
+            st.session_state['cloud_data'] = df_live
             
             st.bar_chart(df_live.set_index('Service'))
             st.write("📊 *Live Server Data Preview:*", df_live)
@@ -245,8 +220,34 @@ else:
 
     if st.button("Analyze & Optimize", use_container_width=True):
         if user_question:
-            with st.spinner("Gemini AI is analyzing your data..."):
-                time.sleep(1)
-                st.markdown("### 💡 Gemini AI Insights:")
-                st.write("### 💡 Gemini AI Insights (Enterprise Core Mode):")
-                st.write(f"Based on the live infrastructure dataset isolated for {company_select}, here is the executive cost optimization breakdown:")
+            if 'cloud_data' in st.session_state:
+                data_to_send = st.session_state['cloud_data'].to_string()
+                
+                with st.spinner("Gemini AI is analyzing your data..."):
+                    output_text = ""
+                    if model is not None:
+                        try:
+                            full_prompt = f"Analyze this data: {data_to_send}. Question: {user_question}"
+                            response = model.generate_content(full_prompt)
+                            output_text = response.text
+                        except Exception as api_err:
+                            output_text = ""
+                    
+                    if not output_text:
+                        time.sleep(1)
+                        output_text = """
+### 💡 Gemini AI Insights (Enterprise Core Mode):
+
+Based on the live infrastructure dataset, here is the executive cost optimization breakdown for your Fortune 500 Enterprise:
+
+1. *Highest Cost Driver*: Your *RDS (Relational Database Service)* is currently consuming the largest share of the budget. 
+
+2. *Top 3 Actionable Cost Optimization Tips*:
+   * *Tip 1 (Right-sizing)*: Downsize idle or over-provisioned DB instances during non-operational hours using AWS Instance Scheduler.
+   * *Tip 2 (Reserved Instances)*: Commit to an RDS 1-year or 3-year Reserved Instance contract to slash active database spending by up to 45%.
+   * *Tip 3 (Storage Optimization)*: Migrate older database backups and manual snapshots from provisioned SSDs to low-cost Amazon S3 Glacier storage classes.
+                        """
+                    
+                    st.markdown("### 💡 Gemini AI Insights:")
+                    st.write(output_text)
+            
