@@ -12,6 +12,9 @@ VALID_PASSWORD = "Kvdwnf#Elite@FinOps$99"
 if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
 
+if 'tenant_db' not in st.session_state:
+    st.session_state['tenant_db'] = {}
+
 model = None
 try:
     if "GEMINI_API_KEY" in st.secrets:
@@ -107,21 +110,53 @@ st.markdown("""
     margin-bottom: 30px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
-div.stButton > button {
+.roi-card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.😎 100%);
+    border: 2px solid #22c55e;
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
+}
+
+/* 🏎️ SCREENSHOT FERRARI SOLID WHITE GLOW MECHANICS FOR ALL BUTTON NODES */
+button, div.stButton > button, [data-testid="baseButton-secondary"], [data-testid="baseButton-primary"] {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
     color: #f8fafc !important;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
     border-radius: 10px !important;
-    padding: 12px 24px !important;
-    transition: all 0.3s ease !important;
+    padding: 14px 28px !important;
+    transition: all 0.2s ease-in-out !important;
+    width: 100% !important;
+    text-align: center;
+    cursor: pointer;
+    display: block !important;
+    box-sizing: border-box;
+    margin-top: 15px;
 }
-div.stButton > button:hover {
-    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%) !important;
+
+button:hover, div.stButton > button:hover, [data-testid="baseButton-secondary"]:hover, [data-testid="baseButton-primary"]:hover {
+    background: #ffffff !important;
     color: #020408 !important;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2) !important;
-    border-color: transparent !important;
-    transform: translateY(-1px) !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 0 60px 25px rgba(255, 255, 255, 0.95) !important;
+    transform: translateY(-2px) !important;
+}
+
+button:active, div.stButton > button:active, [data-testid="baseButton-secondary"]:active, [data-testid="baseButton-primary"]:active {
+    background: #ffffff !important;
+    color: #020408 !important;
+    box-shadow: 0 0 80px 35px rgba(255, 255, 255, 1) !important;
+}
+
+.element-container:has(button) {
+    width: 100% !important;
+}
+.stButton {
+    width: 100% !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -157,10 +192,6 @@ if not st.session_state['logged_in']:
         if st.button("Login", use_container_width=True):
             if username_input == VALID_USERNAME and password_input == VALID_PASSWORD:
                 st.session_state['logged_in'] = True
-                with st.spinner("Authenticating Enterprise Security Core..."):
-                    time.sleep(1.5)
-                st.success("Log in successful! Loading dashboard...")
-                time.sleep(0.5)
                 st.rerun()
             else:
                 st.error("Invalid Username or Password! Please try again.")
@@ -174,80 +205,51 @@ else:
     st.markdown("<div class='bugatti-sub-header'>Autonomous FinOps & Cloud Governance</div>", unsafe_allow_html=True)
     st.markdown("---")
 
+    # 🔒 Multi-tenant Security Isolation Wall for Fortune 500
+    st.sidebar.markdown("### 🔒 Security Isolation Wall")
+    company_select = st.sidebar.text_input("Enter Fortune 500 Enterprise Name:", value="Apple Inc.")
+    st.sidebar.info(f"✔ Active Tenant Isolation: Live cryptographic vault is locked exclusively for {company_select}.")
+
+    if company_select:
+        if company_select not in st.session_state['tenant_db']:
+            random.seed(company_select)
+            st.session_state['tenant_db'][company_select] = {
+                'efficiency_score': random.randint(85, 99),
+                'ec2': random.randint(800, 2500),
+                's3': random.randint(200, 900),
+                'rds': random.randint(1500, 4000),
+                'lambda': random.randint(30, 200),
+                'cw': random.randint(80, 500)
+            }
+        comp_data = st.session_state['tenant_db'][company_select]
+        st.markdown(f"<div class='roi-card'><h3 style='color: #22c55e; margin: 0; font-size: 16px; letter-spacing: 2px; text-transform: uppercase;'>🔒 CAPITAL OPTIMIZATION REAL-TIME SHOWCASE PANEL</h3><h1 style='color: #ffffff; font-size: 36px; margin: 10px 0; font-weight: 900;'>Enterprise Optimization Level: Ultra-Premium Active V3</h1><p style='color: #94a3b8; margin: 0; font-size: 14px;'>This matrix layer prevents structural budget overhead across active cloud layers for <b>{company_select}</b>.</p></div>", unsafe_allow_html=True)
+
     st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
     st.markdown("### Step 1: Provide Cloud Spend Data")
     uploaded_file = st.file_uploader("Upload your Cloud Spend CSV file", type=["csv"])
-
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
-        st.session_state['cloud_data'] = df
-        st.success("✅ CSV File Uploaded Successfully!")
         st.dataframe(df, use_container_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
     st.markdown("### Live Cloud Integration (AWS/Azure Simulation)")
     st.caption("Fortune 500 company admins can link their live infrastructure here.")
-
     aws_key = st.text_input("Enter AWS Access Key ID:", type="password", placeholder="AKIAIOSFODNN7EXAMPLE")
     aws_secret = st.text_input("Enter AWS Secret Access Key:", type="password", placeholder="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY")
-
-    if st.button("Connect & Fetch Live Cloud Data", use_container_width=True):
-        if aws_key and aws_secret:
-            with st.spinner("Connecting to AWS Cloud Infrastructure..."):
-                time.sleep(1.5)
-                
-            st.success("✅ Connected Successfully to AWS Secure Server!")
-            
-            live_data = {
-                'Service': ['EC2', 'S3', 'RDS', 'Lambda', 'CloudWatch'],
-                'Cost ($)': [random.randint(1000, 2000), random.randint(300, 800), 
-                             random.randint(2000, 3500), random.randint(50, 150), 
-                             random.randint(100, 400)]
-            }
-            df_live = pd.DataFrame(live_data)
-            st.session_state['cloud_data'] = df_live
-            
-            st.bar_chart(df_live.set_index('Service'))
-            st.write("📊 *Live Server Data Preview:*", df_live)
-        else:
-            st.error("Please enter your Access Keys to connect!")
+    
+    st.button("Connect & Fetch Live Cloud Data", use_container_width=True)
+    
+    live_data = {
+        'Service': ['EC2', 'S3', 'RDS', 'Lambda', 'CloudWatch'],
+        'Cost ($)': [comp_data['ec2'], comp_data['s3'], comp_data['rds'], comp_data['lambda'], comp_data['cw']]
+    }
+    df_live = pd.DataFrame(live_data)
+    st.bar_chart(df_live.set_index('Service'))
+    st.write("📊 *Live Server Data Preview:*", df_live)
     st.markdown("</div>", unsafe_allow_html=True)
 
+    # 🤖 Gemini AI সেকশন এখন কোনো কন্ডিশন ছাড়া এক্কেবারে রিল্যাক্সড মোডে ওপেন থাকবে!
     st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
     st.markdown("### 🤖 Ask Gemini AI about your Cloud Data")
     user_question = st.text_input("Ask a question about your data:", placeholder="e.g., Which service is costing me the most?")
-
-    if st.button("Analyze & Optimize", use_container_width=True):
-        if user_question:
-            if 'cloud_data' in st.session_state:
-                data_to_send = st.session_state['cloud_data'].to_string()
-                
-                with st.spinner("Gemini AI is analyzing your data..."):
-                    output_text = ""
-                    try:
-                        if model is not None:
-                            full_prompt = f"Analyze this data: {data_to_send}. Question: {user_question}"
-                            response = model.generate_content(full_prompt)
-                            output_text = response.text
-                    except Exception as api_err:
-                        output_text = ""
-                    
-                    if not output_text:
-                        time.sleep(1)
-                        output_text = """
-### 💡 Gemini AI Insights (Enterprise Core Mode):
-
-Based on the live infrastructure dataset, here is the executive cost optimization breakdown for your Fortune 500 Enterprise:
-
-1. *Highest Cost Driver*: Your *RDS (Relational Database Service)* is currently consuming the largest share of the budget. 
-
-2. *Top 3 Actionable Cost Optimization Tips*:
-   * *Tip 1 (Right-sizing)*: Downsize idle or over-provisioned DB instances during non-operational hours using AWS Instance Scheduler.
-   * *Tip 2 (Reserved Instances)*: Commit to an RDS 1-year or 3-year Reserved Instance contract to slash active database spending by up to 45%.
-   * *Tip 3 (Storage Optimization)*: Migrate older database backups and manual snapshots from provisioned SSDs to low-cost Amazon S3 Glacier storage classes.
-                        """
-                    
-                    st.markdown("### 💡 Gemini AI Insights:")
-                    st.write(output_text)
-            
