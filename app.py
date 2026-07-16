@@ -120,42 +120,42 @@ st.markdown("""
     box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
 }
 
-/* 💎 THE HYPER-LUXURY PLATINUM MATRIX BUTTON SYSTEM 💎 */
-button, div.stButton > button, .ferrari-btn {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #090d16 100%) !important;
-    color: #ffffff !important;
+/* 🏎️ FERRARI STYLE ULTRA-BRIGHT HYPER-GLOW LIGHT MECHANICS (FORCED FULL-WIDTH SIZE) */
+button, div.stButton > button, .ferrari-btn, [data-testid="baseButton-secondary"] {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+    color: #f8fafc !important;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600 !important;
-    font-size: 14px !important;
-    letter-spacing: 3px !important;
-    text-transform: uppercase !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 14px !important;
-    padding: 14px 28px !important;
-    width: 100% !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 10px !important;
+    padding: 12px 24px !important;
+    transition: all 0.2s ease-in-out !important;
+    width: 100% !important; /* বাটন দুটোকে পাসওয়ার্ড বক্সের মতো পুরো বড় করা হলো */
     text-align: center;
     cursor: pointer;
     display: block !important;
     box-sizing: border-box;
-    margin-top: 15px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    margin-top: 10px;
 }
-
-button:hover, div.stButton > button:hover, .ferrari-btn:hover {
-    color: #000000 !important;
+button:hover, div.stButton > button:hover, .ferrari-btn:hover, [data-testid="baseButton-secondary"]:hover {
     background: #ffffff !important;
-    border-color: #ffffff !important;
-    transform: translateY(-3px) scale(1.01) !important;
-    box-shadow: 0 0 50px 10px rgba(255, 255, 255, 0.95), 0 10px 30px rgba(255, 255, 255, 0.2) !important;
+    color: #020408 !important;
+    box-shadow: 0 0 60px 25px rgba(255, 255, 255, 0.95) !important;
+    border-color: transparent !important;
+    transform: translateY(-2px) !important;
+}
+button:active, div.stButton > button:active, .ferrari-btn:active, [data-testid="baseButton-secondary"]:active {
+    background: #e2e8f0 !important;
+    box-shadow: 0 0 80px 35px rgba(255, 255, 255, 1) !important;
+    transform: translateY(0px) !important;
 }
 
-button:active, div.stButton > button:active, .ferrari-btn:active {
-    background: #f1f5f9 !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 0 60px 20px rgba(255, 255, 255, 1) !important;
+/* Streamlit ডিফল্ট বাটনের উইডথ জোরপূর্বক বড় করার জন্য গ্লোবাল ক্লাসরুম ইনজেকশন */
+.element-container:has(button) {
+    width: 100% !important;
+}
+.stButton {
+    width: 100% !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -187,9 +187,16 @@ if not st.session_state['logged_in']:
         password_input = st.text_input("Password:", type="password")
         
         st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown('<button class="ferrari-btn" onclick="document.getElementById(\'hidden-login-btn\').click()">Login</button>', unsafe_allow_html=True)
         
-        if st.button("Submit Passport", key="hidden-login-btn"):
+        # ডিফল্ট বাটন মেকানিজম সরাসরি বড় আকারে সেট করা হলো
+        if st.button("Login", use_container_width=True):
+            if username_input == VALID_USERNAME and password_input == VALID_PASSWORD:
+                st.session_state['logged_in'] = True
+                st.rerun()
+            else:
+                st.error("Invalid Username or Password! Please try again.")
+                
+        if st.button("Submit Passport", use_container_width=True):
             if username_input == VALID_USERNAME and password_input == VALID_PASSWORD:
                 st.session_state['logged_in'] = True
                 st.rerun()
@@ -237,8 +244,8 @@ else:
     aws_key = st.text_input("Enter AWS Access Key ID:", type="password", placeholder="AKIAIOSFODNN7EXAMPLE")
     aws_secret = st.text_input("Enter AWS Secret Access Key:", type="password", placeholder="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY")
     
-    st.markdown('<button class="ferrari-btn" onclick="document.getElementById(\'hidden-connect-btn\').click()">Connect & Fetch Live Cloud Data</button>', unsafe_allow_html=True)
-    st.button("Trigger Connect", key="hidden-connect-btn")
+    if st.button("Connect & Fetch Live Cloud Data", use_container_width=True):
+        pass
     
     live_data = {
         'Service': ['EC2', 'S3', 'RDS', 'Lambda', 'CloudWatch'],
@@ -246,8 +253,3 @@ else:
     }
     df_live = pd.DataFrame(live_data)
     st.bar_chart(df_live.set_index('Service'))
-    st.write("📊 *Live Server Data Preview:*", df_live)
-    st.markdown("</div>", unsafe_allow_html=True)
-
-    st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
-
