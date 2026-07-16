@@ -120,27 +120,42 @@ st.markdown("""
     box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
 }
 
-.ferrari-btn {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
-    color: #f8fafc !important;
+/* 💎 THE HYPER-LUXURY PLATINUM MATRIX BUTTON SYSTEM 💎 */
+button, div.stButton > button, .ferrari-btn {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #090d16 100%) !important;
+    color: #ffffff !important;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600 !important;
-    border: 1px solid rgba(255, 255, 255, 0.25) !important;
-    border-radius: 10px !important;
-    padding: 12px 24px !important;
-    transition: all 0.2s ease-in-out !important;
+    font-size: 14px !important;
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 14px !important;
+    padding: 14px 28px !important;
     width: 100% !important;
     text-align: center;
     cursor: pointer;
-    display: inline-block;
+    display: block !important;
     box-sizing: border-box;
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
-.ferrari-btn:hover {
+
+button:hover, div.stButton > button:hover, .ferrari-btn:hover {
+    color: #000000 !important;
     background: #ffffff !important;
-    color: #020408 !important;
-    box-shadow: 0 0 60px 25px rgba(255, 255, 255, 0.95) !important;
-    border-color: transparent !important;
-    transform: translateY(-2px) !important;
+    border-color: #ffffff !important;
+    transform: translateY(-3px) scale(1.01) !important;
+    box-shadow: 0 0 50px 10px rgba(255, 255, 255, 0.95), 0 10px 30px rgba(255, 255, 255, 0.2) !important;
+}
+
+button:active, div.stButton > button:active, .ferrari-btn:active {
+    background: #f1f5f9 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 0 60px 20px rgba(255, 255, 255, 1) !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -235,14 +250,4 @@ else:
     st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
-    st.markdown("### 🤖 Ask Gemini AI about your Cloud Data")
-    user_question = st.text_input("Ask a question about your data:", placeholder="e.g., Which service is costing me the most?")
-    
-    st.markdown('<button class="ferrari-btn" onclick="document.getElementById(\'hidden-analyze-btn\').click()">Analyze & Optimize</button>', unsafe_allow_html=True)
-    
-    if st.button("Trigger Analyze", key="hidden-analyze-btn"):
-        if user_question:
-            with st.spinner("Gemini AI is analyzing your data..."):
-                time.sleep(1)
-            st.markdown("### 💡 Gemini AI Insights:")
-            st.write("### 💡 Gemini AI Insights (Enterprise Core Mode):")
+
