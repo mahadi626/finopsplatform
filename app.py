@@ -120,27 +120,28 @@ st.markdown("""
     box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
 }
 
-/* 🏎️ FERRARI STYLE TRIPLE INJECTION FOR PERFECT WHITE GLOW OVERRIDE */
-div.stButton > button, button, [data-testid="baseButton-secondary"] {
+/* 🏎️ FERRARI PURE REAL-TIME HTML HOVER GLOW SYSTEM */
+.ferrari-btn {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
     color: #f8fafc !important;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600 !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
     border-radius: 10px !important;
     padding: 12px 24px !important;
     transition: all 0.2s ease-in-out !important;
+    width: 100% !important;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    box-sizing: border-box;
 }
-div.stButton > button:hover, button:hover, [data-testid="baseButton-secondary"]:hover {
+.ferrari-btn:hover {
     background: #ffffff !important;
     color: #020408 !important;
     box-shadow: 0 0 60px 25px rgba(255, 255, 255, 0.95) !important;
     border-color: transparent !important;
     transform: translateY(-2px) !important;
-}
-div.stButton > button:active, button:active, [data-testid="baseButton-secondary"]:active {
-    background: #e2e8f0 !important;
-    box-shadow: 0 0 80px 35px rgba(255, 255, 255, 1) !important;
-    transform: translateY(0px) !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -173,10 +174,16 @@ if not st.session_state['logged_in']:
         
         st.markdown("<br>", unsafe_allow_html=True)
         
-        if st.button("Login", use_container_width=True):
+        # 🏎️ এখানে খাঁটি HTML বাটন দেওয়া হলো, যা মাউস নেওয়া মাত্রই তীব্র সাদা আলো ছড়াবে!
+        st.markdown('<button class="ferrari-btn" onclick="document.getElementById(\'hidden-login-btn\').click()">Login</button>', unsafe_allow_html=True)
+        
+        # ব্যাক-এন্ডে প্রসেস করার জন্য স্ট্রিমলিটের গোপন বাটন
+        if st.button("Submit Passport", key="hidden-login-btn", label_visibility="collapsed"):
             if username_input == VALID_USERNAME and password_input == VALID_PASSWORD:
                 st.session_state['logged_in'] = True
                 st.rerun()
+            else:
+                st.error("Invalid Username or Password! Please try again.")
 
 else:
     if st.sidebar.button("Logout 🚪", use_container_width=True):
@@ -219,7 +226,8 @@ else:
     aws_key = st.text_input("Enter AWS Access Key ID:", type="password", placeholder="AKIAIOSFODNN7EXAMPLE")
     aws_secret = st.text_input("Enter AWS Secret Access Key:", type="password", placeholder="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY")
     
-    st.button("Connect & Fetch Live Cloud Data", use_container_width=True)
+    st.markdown('<button class="ferrari-btn" onclick="document.getElementById(\'hidden-connect-btn\').click()">Connect & Fetch Live Cloud Data</button>', unsafe_allow_html=True)
+    st.button("Trigger Connect", key="hidden-connect-btn", label_visibility="collapsed")
     
     live_data = {
         'Service': ['EC2', 'S3', 'RDS', 'Lambda', 'CloudWatch'],
@@ -234,11 +242,4 @@ else:
     st.markdown("### 🤖 Ask Gemini AI about your Cloud Data")
     user_question = st.text_input("Ask a question about your data:", placeholder="e.g., Which service is costing me the most?")
     
-    if st.button("Analyze & Optimize", use_container_width=True):
-        if user_question:
-            with st.spinner("Gemini AI is analyzing your data..."):
-                time.sleep(1)
-            st.markdown("### 💡 Gemini AI Insights:")
-            st.write("### 💡 Gemini AI Insights (Enterprise Core Mode):")
-            st.write(f"Based on the live infrastructure dataset isolated for {company_select}, here is the executive cost optimization breakdown:")
-            st.write(f"1. *Highest Cost Driver*: Your RDS (Relational Database Service) is currently consuming the largest share of the budget (${comp_data['rds']}).")
+    st.markdown('<button class="ferrari-btn" onclick="document.getElementById(\'hidden-analyze-btn\').click()">Analyze & Optimize</button>', unsafe_allow_html=True)
