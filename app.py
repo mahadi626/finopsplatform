@@ -8,14 +8,25 @@ st.set_page_config(page_title="Autonomous FinOps Platform", layout="wide")
 
 VALID_USERNAME = "FinOpsAdmin2030"
 VALID_PASSWORD = "Kvdwnf#Elite@FinOps$99"
-# === SESSION STATE INITIALIZATION FOR CLEAN INPUTS ===
-if "last_company" not in st.session_state:
-    st.session_state["last_company"] = "Apple Inc."
 
-if "selected_company" in st.session_state and st.session_state["selected_company"] != st.session_state["last_company"]:
+if 'logged_in' not in st.session_state:
+    st.session_state['logged_in'] = False
+
+# === 🧠 সেশন স্টেট ক্লিয়ার করার আসল ম্যাজিক লজিক ===
+if "current_comp" not in st.session_state:
+    st.session_state["current_comp"] = "Apple Inc."
+
+# সাইডবারের সার্চ বক্সের ডেটা সরাসরি এই লজিকের সাথে কানেক্ট করা
+if "selected_company" in st.session_state:
+    if st.session_state["selected_company"] != st.session_state["current_comp"]:
+        st.session_state["aws_key_input"] = ""  # আগের কোম্পানির টাইপ করা লেখা মুছে যাবে
+        st.session_state["aws_secret_input"] = "" # আগের কোম্পানির টাইপ করা লেখা মুছে যাবে
+        st.session_state["current_comp"] = st.session_state["selected_company"]
+
     st.session_state["aws_key_input"] = ""
     st.session_state["aws_secret_input"] = ""
     st.session_state["last_company"] = st.session_state["selected_company"]
+
 
 if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
@@ -198,11 +209,15 @@ else:
     st.markdown("### Live Cloud Integration (AWS/Azure Simulation)")
     st.caption("Fortune 500 company admins can link their live infrastructure here.")
 
-    aws_key = st.text_input("Enter AWS Access Key ID:", type="password", placeholder="AKIAIOSFODNN7EXAMPLE")
-    aws_secret = st.text_input("Enter AWS Secret Access Key:", type="password", placeholder="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY")
+    aws_access_key = st.text_input("Enter AWS Access Key ID:", key="aws_key_input")
+    aws_secret_key = st.text_input("Enter AWS Secret Access Key:", type="password", key="aws_secret_input")
+    if aws_access_key and aws_secret_key:
 
-    if st.button("Connect & Fetch Live Cloud Data", use_container_width=True):
-        if aws_key and aws_secret:
+
+
+
+        if st.button("Connect & Fetch Live Cloud Data", use_container_width=True):
+        
             with st.spinner("Connecting to AWS Cloud Infrastructure..."):
                 time.sleep(1.5)
                 
