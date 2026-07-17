@@ -209,15 +209,11 @@ else:
     st.markdown("### Live Cloud Integration (AWS/Azure Simulation)")
     st.caption("Fortune 500 company admins can link their live infrastructure here.")
 
-    aws_access_key = st.text_input("Enter AWS Access Key ID:", key="aws_key_input")
-    aws_secret_key = st.text_input("Enter AWS Secret Access Key:", type="password", key="aws_secret_input")
-    if aws_access_key and aws_secret_key:
+    aws_key = st.text_input("Enter AWS Access Key ID:", type="password", placeholder="AKIAIOSFODNN7EXAMPLE")
+    aws_secret = st.text_input("Enter AWS Secret Access Key:", type="password", placeholder="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY")
 
-
-
-
-        if st.button("Connect & Fetch Live Cloud Data", use_container_width=True):
-        
+    if st.button("Connect & Fetch Live Cloud Data", use_container_width=True):
+        if aws_key and aws_secret:
             with st.spinner("Connecting to AWS Cloud Infrastructure..."):
                 time.sleep(1.5)
                 
