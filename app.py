@@ -8,6 +8,14 @@ st.set_page_config(page_title="Autonomous FinOps Platform", layout="wide")
 
 VALID_USERNAME = "FinOpsAdmin2030"
 VALID_PASSWORD = "Kvdwnf#Elite@FinOps$99"
+# === SESSION STATE INITIALIZATION FOR CLEAN INPUTS ===
+if "last_company" not in st.session_state:
+    st.session_state["last_company"] = "Apple Inc."
+
+if "selected_company" in st.session_state and st.session_state["selected_company"] != st.session_state["last_company"]:
+    st.session_state["aws_key_input"] = ""
+    st.session_state["aws_secret_input"] = ""
+    st.session_state["last_company"] = st.session_state["selected_company"]
 
 if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
@@ -260,7 +268,8 @@ Based on the live infrastructure dataset, here is the executive cost optimizatio
     selected_company = st.sidebar.selectbox("Select Enterprise Tenant:", fortune_companies, key="tenant_selector")
     st.sidebar.markdown(f"*Active Session:* {selected_company}")
     # === FOR ALL 494 FORTUNE COMPANIES ===
-    selected_company = st.sidebar.text_input("Search or Enter Enterprise Name:", value="Apple Inc.")
+    selected_company = st.sidebar.text_input("Search or Enter Enterprise Name:", value="Apple Inc.", key="selected_company")
+
     st.sidebar.markdown("---")
     st.sidebar.markdown("### 💳 ENTERPRISE BILLING")
     st.sidebar.markdown("Account Status: <span style='color: #10b981; font-weight: bold;'>ACTIVE (Enterprise)</span>", unsafe_allow_html=True)
