@@ -16,16 +16,33 @@ if 'logged_in' not in st.session_state:
 if "current_comp" not in st.session_state:
     st.session_state["current_comp"] = "Apple Inc."
 
-# সাইডবারের সার্চ বক্সের ডেটা সরাসরি এই লজিকের সাথে কানেক্ট করা
+# ১৯ নম্বর লাইন থেকে এই নতুন কোডটি বসান:
 if "selected_company" in st.session_state:
-    if st.session_state["selected_company"] != st.session_state["current_comp"]:
-        st.session_state["aws_key_input"] = ""  # আগের কোম্পানির টাইপ করা লেখা মুছে যাবে
-        st.session_state["aws_secret_input"] = "" # আগের কোম্পানির টাইপ করা লেখা মুছে যাবে
-        st.session_state["current_comp"] = st.session_state["selected_company"]
+    chosen_company = st.session_state["selected_company"]
+    
+    # টেস্টিং ও ইউজার সিকিউরিটির জন্য আসল কন্ডিশন:
+    is_developer = st.session_state.get("username") == VALID_USERNAME
+    user_actual_company = st.session_state.get("logged_in_company", "Apple Inc.") # ডিফল্ট Apple Inc. ধরা হয়েছে
+    
+    # ১. আপনি যখন নিজে মেইন অ্যাডমিন আইডি দিয়ে টেস্ট করবেন, তখন কোনো এরর আসবে না
+    if is_developer:
+        if chosen_company != st.session_state["current_comp"]:
+            st.session_state["aws_key_input"] = ""
+            st.session_state["aws_secret_input"] = ""
+            st.session_state["current_comp"] = chosen_company
+            
+    # ২. ওয়ালমার্ট বা অন্য কোনো কোম্পানি যখন সার্চ করবে:
+    else:
+        # যদি তারা নিজেদের কোম্পানি সার্চ করে, তবে সুন্দরভাবে ড্যাশবোর্ড খুলবে (কোনো এরর আসবে না)
+        if chosen_company == user_actual_company:
+            if chosen_company != st.session_state["current_comp"]:
+                st.session_state["aws_key_input"] = ""
+                st.session_state["aws_secret_input"] = ""
+                st.session_state["current_comp"] = chosen_company
+        # ৩. কিন্তু নিজেদের কোম্পানি ছাড়া অন্য কিছু (যেমন Microsoft) সার্চ করলেই আটকে দেবে
+        else:
+            st.error(f"🚨 ACCESS DENIED: Your account does not have permission to view {chosen_company} data!")
 
-    st.session_state["aws_key_input"] = ""
-    st.session_state["aws_secret_input"] = ""
-    st.session_state["last_company"] = st.session_state["selected_company"]
 
 
 if 'logged_in' not in st.session_state:
