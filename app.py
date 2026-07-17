@@ -260,7 +260,7 @@ Based on the live infrastructure dataset, here is the executive cost optimizatio
     selected_company = st.sidebar.selectbox("Select Enterprise Tenant:", fortune_companies, key="tenant_selector")
     st.sidebar.markdown(f"*Active Session:* {selected_company}")
     # === FOR ALL 494 FORTUNE COMPANIES ===
-    selected_company = st.sidebar.text_input("OR Enter Custom Enterprise Name:", value=selected_company, key="custom_tenant")
+    selected_company = st.sidebar.text_input("Search or Enter Enterprise Name:", value="Apple Inc.")
     st.sidebar.markdown("---")
     st.sidebar.markdown("### 💳 ENTERPRISE BILLING")
     st.sidebar.markdown("Account Status: <span style='color: #10b981; font-weight: bold;'>ACTIVE (Enterprise)</span>", unsafe_allow_html=True)
