@@ -301,7 +301,7 @@ Based on the live infrastructure dataset, here is the executive cost optimizatio
     st.sidebar.markdown("---")
     st.sidebar.markdown("### 💳 ENTERPRISE BILLING")
     st.sidebar.markdown("Account Status: <span style='color: #10b981; font-weight: bold;'>ACTIVE (Enterprise)</span>", unsafe_allow_html=True)
-    st.sidebar.markdown("Next Invoice: *$85,000 / Month*")
+    st.sidebar.markdown("Next Invoice: *As per Enterprise SLA*")
 
     # LUXURIOUS ROI ORACLE PANEL (BUGATTI STYLE)
     st.markdown(f"""
