@@ -338,14 +338,35 @@ Based on the live infrastructure dataset, here is the executive cost optimizatio
             st.success("✅ Secure Token Generated!")
     st.markdown("</div>", unsafe_allow_html=True)
 
-    # FEATURE 3: 90-DAY PREDICTIVE AI ALERTS (METALLIC RED BORDER)
-    st.markdown("<div class='luxury-container' style='border-color: #ef4444; box-shadow: 0 0 25px rgba(239, 68, 68, 0.15);'>", unsafe_allow_html=True)
-    st.markdown("<h3 style='color: #ef4444;'>⚠️ 90-Day Predictive Budget Alert</h3>", unsafe_allow_html=True)
+# FEATURE 3: 90-DAY PREDICTIVE AI ALERTS (METALLIC RED BORDER)
+
+# ১. যদি ফাইলের ওপরে ডিফাইন করা নাও থাকে, এখানে আমরা একটি সেফটি চেক করে নিচ্ছি
+if 'current_spend' not in st.session_state:
+    st.session_state['current_spend'] = 0
+if 'predicted_spend' not in st.session_state:
+    st.session_state['predicted_spend'] = 0
+
+st.markdown("<div class='luxury-container' style='border-color: #ef4444; box-shadow: 0 0 25px rgba(239, 68, 68, 0.15);'>", unsafe_allow_html=True)
+st.markdown("<h3 style='color: #ef4444;'>⚠️ 90-Day Predictive Budget Alert</h3>", unsafe_allow_html=True)
+
+# কাস্টমার চাবি চাপ দিলে আসল ডাটা দেখাবে, না দিলে চাবি দিতে বলবে
+if st.session_state['current_spend'] > 0:
+    c_spend = st.session_state['current_spend']
+    p_spend = st.session_state['predicted_spend']
+    
     st.markdown(f"""
-    <div style='text-align: left; padding: 15px; background: rgba(239, 68, 68, 0.05); border-radius: 12px; border-left: 4px solid #ef4444;'>
-        <p style='color: #fca5a5; font-size: 14px; margin-bottom: 5px;'><b>CRITICAL FORECAST:</b> Our Predictive AI Core has analyzed {selected_company} cloud infrastructure growth trends for the next 90 days.</p>
-        <p style='color: #ffffff; font-size: 16px; margin: 0;'>Current Monthly Spend: <b>$158,000</b> <span style='color: #ef4444;'>➔</span> Predicted October 2026 Spend: <b style='color: #ef4444;'>$240,160</b></p>
-        <p style='color: #cbd5e1; font-size: 12px; margin-top: 8px; font-style: italic;'>*Action Required: Anomaly driven by over-provisioned blocks. Use Gemini AI below to auto-remediate.*</p>
+    <div style="text-align: left; padding: 15px; background: rgba(239, 68, 68, 0.05); border-radius: 12px; border-left: 4px solid #ef4444;">
+        <p style="color: #fca5a5; font-size: 14px; margin-bottom: 5px;"><b>CRITICAL FORECAST:</b> Our Predictive AI Core has analyzed <b>{selected_company}</b> cloud infrastructure growth trends for the next 90 days.</p>
+        <p style="color: #ffffff; font-size: 16px; margin: 0;">Current Monthly Spend: <b>${c_spend:,}</b> → <span style="color: #ef4444;">Predicted Spend: <b>${p_spend:,}</b></span></p>
+        <p style="color: #cbd5e1; font-size: 12px; margin-top: 5px; font-style: italic;">*Action Required: Anomaly driven by over-provisioned blocks. Use Gemini AI below to auto-remediate.*</p>
     </div>
     """, unsafe_allow_html=True)
+else:
+    st.markdown(f"""
+    <div style="text-align: left; padding: 15px; background: rgba(59, 130, 246, 0.05); border-radius: 12px; border-left: 4px solid #3b82f6;">
+        <p style="color: #93c5fd; font-size: 14px; margin: 0;">💡 <b>Action Required:</b> Please enter your AWS/Azure Access Keys above to link <b>{selected_company}</b> live infrastructure and generate the 90-Day Predictive Budget Alert.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
     st.markdown("</div>", unsafe_allow_html=True)
+
