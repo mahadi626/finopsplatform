@@ -356,7 +356,7 @@ if st.session_state['current_spend'] > 0:
     
     st.markdown(f"""
     <div style="text-align: left; padding: 15px; background: rgba(239, 68, 68, 0.05); border-radius: 12px; border-left: 4px solid #ef4444;">
-        <p style="color: #fca5a5; font-size: 14px; margin-bottom: 5px;"><b>CRITICAL FORECAST:</b> Our Predictive AI Core has analyzed <b>{chosen_company}</b> cloud infrastructure growth trends for the next 90 days.</p>
+        <p style="color: #fca5a5; font-size: 14px; margin-bottom: 5px;"><b>CRITICAL FORECAST:</b> Our Predictive AI Core has analyzed <b>Enterprise</b> cloud infrastructure growth trends for the next 90 days.</p>
         <p style="color: #ffffff; font-size: 16px; margin: 0;">Current Monthly Spend: <b>${c_spend:,}</b> → <span style="color: #ef4444;">Predicted Spend: <b>${p_spend:,}</b></span></p>
         <p style="color: #cbd5e1; font-size: 12px; margin-top: 5px; font-style: italic;">*Action Required: Anomaly driven by over-provisioned blocks. Use Gemini AI below to auto-remediate.*</p>
     </div>
@@ -364,7 +364,7 @@ if st.session_state['current_spend'] > 0:
 else:
     st.markdown(f"""
     <div style="text-align: left; padding: 15px; background: rgba(59, 130, 246, 0.05); border-radius: 12px; border-left: 4px solid #3b82f6;">
-        <p style="color: #93c5fd; font-size: 14px; margin: 0;">💡 <b>Action Required:</b> Please enter your AWS/Azure Access Keys above to link <b>{chosen_company}</b> live infrastructure and generate the 90-Day Predictive Budget Alert.</p>
+        <p style="color: #93c5fd; font-size: 14px; margin: 0;">💡 <b>Action Required:</b> Please enter your AWS/Azure Access Keys above to link <b>Enterprise</b> live infrastructure and generate the 90-Day Predictive Budget Alert.</p>
     </div>
     """, unsafe_allow_html=True)
 
