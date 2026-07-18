@@ -311,15 +311,18 @@ Based on the live infrastructure dataset, here is the executive cost optimizatio
         <div style='display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px;'>
             <div style='flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px;'>
                 <div style='font-size: 11px; letter-spacing: 2px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;'>Gross Cloud Spend</div>
-                <div style='font-size: 36px; font-weight: 700; color: #ffffff;'>$158,000</div>
+                <div style="font-size: 36px; font-weight: 700; color: #ffffff;">{st.session_state.get('gross_spend', '--')}</div>
+
             </div>
             <div style='flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px;'>
                 <div style='font-size: 11px; letter-spacing: 2px; color: #10b981; text-transform: uppercase; margin-bottom: 8px;'>Total Wealth Saved</div>
-                <div style='font-size: 36px; font-weight: 700; color: #10b981; text-shadow: 0 0 25px rgba(16, 185, 129, 0.4);'>$50,560</div>
+                <div style="font-size: 36px; font-weight: 700; color: #10b981; text-shadow: 0 0 25px rgba(16, 185, 129, 0.4);">{st.session_state.get('wealth_saved', '--')}</div>
+
             </div>
             <div style='flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px;'>
                 <div style='font-size: 11px; letter-spacing: 2px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;'>Optimized Cost</div>
-                <div style='font-size: 36px; font-weight: 700; color: #ffffff;'>$107,440</div>
+                <div style="font-size: 36px; font-weight: 700; color: #ffffff;">{st.session_state.get('optimized_cost', '--')}</div>
+
             </div>
         </div>
     </div>
