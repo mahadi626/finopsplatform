@@ -293,10 +293,11 @@ Based on the live infrastructure dataset, here is the executive cost optimizatio
     st.sidebar.markdown("---")
     st.sidebar.markdown("### 🔒 SECURITY CORE")
     fortune_companies = ["Apple Inc.", "Walmart", "Amazon", "Microsoft", "Alphabet (Google)", "ExxonMobil"]
-    selected_company = st.sidebar.selectbox("Select Enterprise Tenant:", fortune_companies, key="tenant_selector")
-    st.sidebar.markdown(f"*Active Session:* {selected_company}")
+    # selected_company = st.sidebar.selectbox("Select Enterprise Tenant:", fortune_companies, key="tenant_selector")
+    st.sidebar.markdown(f"*Active Session:* {st.session_state.get('selected_company', 'Apple Inc.')}")
     # === FOR ALL 494 FORTUNE COMPANIES ===
-    selected_company = st.sidebar.text_input("Search or Enter Enterprise Name:", value="Apple Inc.", key="selected_company")
+    selected_company = st.sidebar.text_input("🔒 Select Corporate Entity", value="Apple Inc.", key="selected_company")
+
 
     st.sidebar.markdown("---")
     st.sidebar.markdown("### 💳 ENTERPRISE BILLING")
