@@ -18,7 +18,7 @@ if "current_comp" not in st.session_state:
 
 # ১৯ নম্বর লাইন থেকে এই নতুন কোডটি বসান:
 if "selected_company" in st.session_state:
-   chosen_company = st.sidebar.text_input("🔒 Select Corporate Entity", placeholder="Type enterprise name here...")
+    chosen_company = st.session_state["selected_company"]
     
     # টেস্টিং ও ইউজার সিকিউরিটির জন্য আসল কন্ডিশন:
     is_developer = st.session_state.get("username") == VALID_USERNAME
