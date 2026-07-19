@@ -304,33 +304,24 @@ Based on the live infrastructure dataset, here is the executive cost optimizatio
     st.sidebar.markdown("Next Invoice: *$85,000 / Month*")
 
     # LUXURIOUS ROI ORACLE PANEL (BUGATTI STYLE)
-    st.markdown(f"""
-<div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.5) 100%); border: 2px solid #6352ac; border-radius: 12px; padding: 20px; width: 100%; box-sizing: border-box;">
-    
-    <div style="font-family: serif; font-weight: 700; color: #d1b3c4; font-size: 24px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 25px; text-align: center;">
+    st.markdown("""
+<div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 2px solid #6352ac; border-radius: 12px; padding: 20px; width: 100%; box-sizing: border-box;">
+    <div style="font-family: serif; font-weight: 700; color: #d1b3c4; font-size: 22px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 25px; text-align: center;">
         Executive Cost Optimization Intelligence • Apple Inc.
     </div>
-    
     <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px;">
-        
-        <!-- CARD 1: GROSS CLOUD SPEND -->
-        <div style="flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px; text-align: center;">
+        <div style="flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1);">
             <div style="font-size: 11px; letter-spacing: 2px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">Gross Cloud Spend</div>
             <div style="font-size: 32px; font-weight: 700; color: #ffffff;">$158,000</div>
         </div>
-        
-        <!-- CARD 2: TOTAL WEALTH SAVED -->
-        <div style="flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px; text-align: center;">
+        <div style="flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 12px; text-align: center; border: 1px solid rgba(16,185,129,0.2);">
             <div style="font-size: 11px; letter-spacing: 2px; color: #10b981; text-transform: uppercase; margin-bottom: 8px;">Total Wealth Saved</div>
-            <div style="font-size: 32px; font-weight: 700; color: #10b981; text-shadow: 0 0 25px rgba(16, 185, 129, 0.4);">$50,560</div>
+            <div style="font-size: 32px; font-weight: 700; color: #10b981;">$50,560</div>
         </div>
-        
-        <!-- CARD 3: OPTIMIZED COST -->
-        <div style="flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px; text-align: center;">
+        <div style="flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1);">
             <div style="font-size: 11px; letter-spacing: 2px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">Optimized Cost</div>
             <div style="font-size: 32px; font-weight: 700; color: #ffffff;">$107,440</div>
         </div>
-        
     </div>
 </div>
 """, unsafe_allow_html=True)
