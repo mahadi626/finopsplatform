@@ -301,31 +301,29 @@ Based on the live infrastructure dataset, here is the executive cost optimizatio
     st.sidebar.markdown("---")
     st.sidebar.markdown("### 💳 ENTERPRISE BILLING")
     st.sidebar.markdown("Account Status: <span style='color: #10b981; font-weight: bold;'>ACTIVE (Enterprise)</span>", unsafe_allow_html=True)
-    st.sidebar.markdown("Next Invoice: *$85,000 / Month*")
+    st.sidebar.markdown("Next Invoice: *As per Enterprise SLA*")
 
     # LUXURIOUS ROI ORACLE PANEL (BUGATTI STYLE)
-    st.markdown("""
-<div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 2px solid #6352ac; border-radius: 12px; padding: 20px; width: 100%; box-sizing: border-box;">
-    <div style="font-family: serif; font-weight: 700; color: #d1b3c4; font-size: 22px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 25px; text-align: center;">
-        Executive Cost Optimization Intelligence • Apple Inc.
+    st.markdown(f"""
+    <div style='background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.😎 100%); border: 2px solid #b392ac; border-radius: 20px; padding: 35px; margin-bottom: 35px; text-align: center; box-shadow: 0 0 40px rgba(179, 146, 172, 0.15);'>
+        <div style='font-family: serif; font-weight: 700; color: #d1b3c4; font-size: 26px; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 5px;'>Apex Fortune ROI Oracle</div>
+        <div style='color: #64748b; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 25px;'>Executive Cost Optimization Intelligence • {selected_company.upper()}</div>
+        <div style='display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px;'>
+            <div style='flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px;'>
+                <div style='font-size: 11px; letter-spacing: 2px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;'>Gross Cloud Spend</div>
+                <div style='font-size: 36px; font-weight: 700; color: #ffffff;'>$158,000</div>
+            </div>
+            <div style='flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px;'>
+                <div style='font-size: 11px; letter-spacing: 2px; color: #10b981; text-transform: uppercase; margin-bottom: 8px;'>Total Wealth Saved</div>
+                <div style='font-size: 36px; font-weight: 700; color: #10b981; text-shadow: 0 0 25px rgba(16, 185, 129, 0.4);'>$50,560</div>
+            </div>
+            <div style='flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 12px;'>
+                <div style='font-size: 11px; letter-spacing: 2px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;'>Optimized Cost</div>
+                <div style='font-size: 36px; font-weight: 700; color: #ffffff;'>$107,440</div>
+            </div>
+        </div>
     </div>
-    <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px;">
-        <div style="flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1);">
-            <div style="font-size: 11px; letter-spacing: 2px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">Gross Cloud Spend</div>
-            <div style="font-size: 32px; font-weight: 700; color: #ffffff;">$158,000</div>
-        </div>
-        <div style="flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 12px; text-align: center; border: 1px solid rgba(16,185,129,0.2);">
-            <div style="font-size: 11px; letter-spacing: 2px; color: #10b981; text-transform: uppercase; margin-bottom: 8px;">Total Wealth Saved</div>
-            <div style="font-size: 32px; font-weight: 700; color: #10b981;">$50,560</div>
-        </div>
-        <div style="flex: 1; min-width: 200px; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1);">
-            <div style="font-size: 11px; letter-spacing: 2px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">Optimized Cost</div>
-            <div style="font-size: 32px; font-weight: 700; color: #ffffff;">$107,440</div>
-        </div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
+    """, unsafe_allow_html=True)
 
     # FEATURE 2: STRIPE B2B PORTAL
     st.markdown("<div class='luxury-container' style='border-color: #635bff;'>", unsafe_allow_html=True)
@@ -340,7 +338,7 @@ Based on the live infrastructure dataset, here is the executive cost optimizatio
             st.success("✅ Secure Token Generated!")
     st.markdown("</div>", unsafe_allow_html=True)
 
-   # FEATURE 3: 90-DAY PREDICTIVE AI ALERTS (METALLIC RED BORDER)
+# FEATURE 3: 90-DAY PREDICTIVE AI ALERTS (METALLIC RED BORDER)
 
 # ১. যদি ফাইলের ওপরে ডিফাইন করা নাও থাকে, এখানে আমরা একটি সেফটি চেক করে নিচ্ছি
 if 'current_spend' not in st.session_state:
@@ -386,6 +384,3 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 st.markdown("</div>", unsafe_allow_html=True)
-
-
-
