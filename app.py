@@ -49,12 +49,15 @@ if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
 
 model = None
-try:
-    if "GEMINI_API_KEY" in st.secrets:
+if "GEMINI_API_KEY" in st.secrets:
+    try:
         genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
         model = genai.GenerativeModel('gemini-1.5-flash')
-except Exception as e:
-    pass
+    except Exception as e:
+        st.error(f"Gemini API কানেকশনে সমস্যা হয়েছে: {str(e)}")
+else:
+    st.warning("secrets.toml ফাইলে GEMINI_API_KEY খুঁজে পাওয়া যায়নি!")
+
 
 st.markdown("""
 <style>
@@ -261,32 +264,21 @@ else:
                 data_to_send = st.session_state['cloud_data'].to_string()
                 
                 with st.spinner("Gemini AI is analyzing your data..."):
-                    output_text = ""
                     if model is not None:
-                        try:
-                            full_prompt = f"Analyze this data: {data_to_send}. Question: {user_question}"
-                            response = model.generate_content(full_prompt)
-                            output_text = response.text
-                        except Exception as api_err:
-                            output_text = ""
-                    
-                    if not output_text:
-                        time.sleep(1)
-                        output_text = """
-### 💡 Gemini AI Insights (Enterprise Core Mode):
+                        full_prompt = f"Analyze this data: {data_to_send}. Question: {user_question}"
+                response = model.generate_content(full_prompt)
+                output_text = response.text
+        
+        if output_text:
+            st.markdown("### 📊 AI Analysis & Recommendations:")
+            st.write(output_text)
 
-Based on the live infrastructure dataset, here is the executive cost optimization breakdown for your Fortune 500 Enterprise:
+                            
 
-1. Highest Cost Driver: Your RDS (Relational Database Service) is currently consuming the largest share of the budget. 
 
-2. Top 3 Actionable Cost Optimization Tips:
-   * Tip 1 (Right-sizing): Downsize idle or over-provisioned DB instances during non-operational hours using AWS Instance Scheduler.
-   * Tip 2 (Reserved Instances): Commit to an RDS 1-year or 3-year Reserved Instance contract to slash active database spending by up to 45%.
-   * Tip 3 (Storage Optimization): Migrate older database backups and manual snapshots from provisioned SSDs to low-cost Amazon S3 Glacier storage classes.
-                        """
-                    
-                    st.markdown("### 💡 Gemini AI Insights:")
-                    st.write(output_text)
+
+
+
 # ==========================================
     # FEATURE 1: APEX FORTUNE ROI ORACLE & MULTI-TENANT ISOLATION
     # ==========================================
