@@ -52,8 +52,7 @@ model = None
 if "GEMINI_API_KEY" in st.secrets:
     try:
         genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-        model = genai.GenerativeModel('gemini-1.5-pro')
-
+        model = genai.GenerativeModel('gemini-1.5-pro-latest')
     except Exception as e:
         st.error(f"Gemini API কানেকশনে সমস্যা হয়েছে: {str(e)}")
 else:
