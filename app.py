@@ -446,8 +446,8 @@ with col2:
     st.code(f"Quantum-Safe Hash (Kyber/Dilithium L3 equivalent):\n{post_quantum_hash}...", language="bash")
 
 # ৫. FedRAMP High Compliance (ফেডর‍্যাম্প হাই কমপ্লায়েন্স ম্যাট্রিক্স)
-st.markdown("#### 🏛️ Government & Regulatory Sovereignty")
-with st.expander("👑 View Advanced Compliance Ledger (FedRAMP High / DoD IL5)"):
+st.markdown("####  Government & Regulatory Sovereignty")
+with st.expander("View Advanced Compliance Ledger (FedRAMP High / DoD IL5)"):
     st.write("""
     * *FedRAMP High Status:* FIPS 140-3 Validated
     * *Department of Defense (DoD):* Impact Level 5 (IL5) Provisioned Security Clearance
