@@ -389,7 +389,7 @@ import os
 # ==============================================================================
 
 st.markdown("---")
-st.markdown("## 👑 Ultra-Enterprise Premium Security Core")
+st.markdown("##  Ultra-Enterprise Premium Security Core")
 st.caption("Active Military-Grade Protocols & Cloud Governance Framework")
 
 # ছদ্মবেশী ডেটাবেজ বা সেশন স্টেট ইনিশিয়ালাইজেশন
