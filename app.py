@@ -258,6 +258,8 @@ else:
     user_question = st.text_input("Ask a question about your data:", placeholder="e.g., Which service is costing me the most?")
 
     if st.button("Analyze & Optimize", use_container_width=True):
+        output_text = None
+
         if user_question:
             if 'cloud_data' in st.session_state:
                 data_to_send = st.session_state['cloud_data'].to_string()
