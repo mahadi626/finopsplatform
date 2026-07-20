@@ -216,7 +216,7 @@ else:
 
     st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
     st.markdown("### Step 1: Provide Cloud Spend Data")
-    uploaded_file = st.file_uploader("Upload your Cloud Spend CSV file (Supports up to 500 MB)", type=["csv"])
+    uploaded_file = st.file_uploader("Upload your Cloud Spend CSV file (Supports up to 5 GB)", type=["csv"])
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
         st.session_state['cloud_data'] = df
