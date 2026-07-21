@@ -676,5 +676,11 @@ sovereign_carousel_html += """
 </html>
 """
 
-# ⚡ টার্মিনালের এরর ফিক্স করে লেটেস্ট 'st.iframe' প্রোটোকল দিয়ে রেন্ডার করা হলো
-st.iframe(srcdoc=sovereign_carousel_html, height=580, scrolling=False)
+# ------------------------------------------------------------------
+# VI. ERROR-FREE RENDER PROTOCOL (STREAMLIT NATIVE HTML COMPONENT)
+# ------------------------------------------------------------------
+import streamlit.components.v1 as components
+
+# লেটেস্ট এরর-ফ্রি মেথড দিয়ে আপনার লাক্সারিয়াস ক্যারোজেল রেন্ডার করা হলো
+components.html(sovereign_carousel_html, height=580, scrolling=False)
+
