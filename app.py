@@ -551,9 +551,10 @@ def render_advanced_fortune_500_features():
 # Execute Premium System Layout
 render_advanced_fortune_500_features()
 # ------------------------------------------------------------------
-# V. THE FORTUNE GLOBAL 500 COUTURE MONOLITH (ULTIMATE MASTERPIECE)
+# V. THE FORTUNE GLOBAL 500 COUTURE MONOLITH (ULTRA LUXURY & CLEAN)
 # ------------------------------------------------------------------
 import streamlit as st
+import streamlit.components.v1 as components
 
 st.write("<br><br>", unsafe_allow_html=True)
 
@@ -580,8 +581,8 @@ for r in range(1, 501):
     if r-1 < len(real_fortune_global_500):
         c_name = real_fortune_global_500[r-1]
     else:
-        c_name = f"SOVEREIGN GLOBAL NODE #{r}"
-    fortune_global_500_database.append({"name": c_name, "rank": f"RANK #{r}"})
+        c_name = f"GLOBAL NODE #{r}"
+    fortune_global_500_database.append({"name": c_name})
 
 # 🎨 এআই-কিউরেটেড ১০টি সম্পূর্ণ আলাদা, গভীর, গাম্ভীর্যপূর্ণ ও আল্ট্রা-লাক্সারিয়াস রঙের মেলবন্ধন
 luxury_couture_gradients = [
@@ -589,7 +590,7 @@ luxury_couture_gradients = [
     "linear-gradient(180deg, #1b3a4b 0%, #0d1f2d 45%, #050b10 100%)",  # 2. Sovereign Navy Slate (ভারী প্রাতিষ্ঠানিক)
     "linear-gradient(180deg, #2c1a4d 0%, #160d29 45%, #0a0514 100%)",  # 3. Royal Midnight Velvet (আভিজাত্য বেগুনী)
     "linear-gradient(180deg, #3a3a3a 0%, #222222 45%, #0f0f0f 100%)",  # 4. Burnished Titanium Steel (মিলিটারি গ্রে)
-    "linear-gradient(180deg, #4a1525 0%, #250a12 45%, #100408 100%)",  # 5. Oxblood Enclave Red (হাই-সিকিউরিটি ভл্ট)
+    "linear-gradient(180deg, #4a1525 0%, #250a12 45%, #100408 100%)",  # 5. Oxblood Enclave Red (হাই-সিকিউরিটি ভল্ট)
     "linear-gradient(180deg, #0f343a 0%, #071b1e 45%, #020a0b 100%)",  # 6. Deep Dark Emerald (সাইবার ইন্টেলিজেন্স)
     "linear-gradient(180deg, #5c3a21 0%, #311e11 45%, #150d07 100%)",  # 7. Smoked Antique Bronze (রাজকীয় ব্রোঞ্জ)
     "linear-gradient(180deg, #16222f 0%, #0b1118 45%, #040609 100%)",  # 8. Dark Sapphire Matrix (নিখুঁত গভর্ন্যান্স)
@@ -597,7 +598,7 @@ luxury_couture_gradients = [
     "linear-gradient(180deg, #222c3c 0%, #11161e 45%, #07090d 100%)"   # 10. Deep Space Iron (ফিউচার ক্লাউড)
 ]
 
-# এইচটিএমএল স্ট্রাকচার শুরু (যা একটি একক ভ্যারিয়েবলে নিখুঁতভাবে ইনডেন্ট করা)
+# এইচটিএমএল স্ট্রাকচার শুরু (টাইটেল এবং স্লাইডার এক সাথে নিখুঁতভাবে ইনডেন্ট করা)
 sovereign_carousel_html = """
 <!DOCTYPE html>
 <html>
@@ -608,7 +609,7 @@ sovereign_carousel_html = """
   <style>
     body { background-color: #0e1117; font-family: 'Inter', sans-serif; margin: 0; padding: 0; overflow: hidden; text-align: center; }
     
-    /* 🏛️ আপনার রিকোয়ারমেন্ট অনুযায়ী নিখুঁত গাম্ভীর্যপূর্ণ বড় হাতের নিচে নিচে সাজানো টাইটেল 🏛️ */
+    /* আপনার প্রথম স্ক্রিনশটের মতো নিখুঁত বড় হাতের স্পেসড-আউট টাইটেল স্টাইল */
     .lux-title-container { margin-top: 25px; margin-bottom: 40px; }
     .lux-title {
         color: #ffffff; font-size: 34px; font-weight: 300; letter-spacing: 7px; line-height: 1.6; margin: 0; text-transform: uppercase;
@@ -619,9 +620,9 @@ sovereign_carousel_html = """
     
     .slider { width: 92%; margin: 10px auto; }
     
-    /* আল্ট্রা-লাক্সারিয়াস মোনোলিথ বেস কার্ড */
+    /* আল্ট্রা-লা克斯ারিয়াস মোনোলিথ বেস কার্ড */
     .apple-sovereign-card {
-      position: relative; border-radius: 16px; margin: 0 10px; overflow: hidden; height: 420px;
+      position: relative; border-radius: 16px; margin: 0 10px; overflow: hidden; height: 380px;
       display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
       box-sizing: border-box; border: 1px solid rgba(255, 255, 255, 0.03);
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75); transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); cursor: pointer;
@@ -633,10 +634,14 @@ sovereign_carousel_html = """
       box-shadow: 0 0 35px rgba(138, 43, 226, 0.7), inset 0 0 20px rgba(138, 43, 226, 0.4);
     }
     
-    /* কন্টেন্ট প্যানেল (কোনো বাটন বা অতিরিক্ত ডেসক্রিপশন ছাড়া সম্পূর্ণ ক্লিন) */
-    .text-container-overlay { position: relative; z-index: 2; padding: 0px 20px 55px 20px; text-align: center; width: 100%; box-sizing: border-box; }
-    .rank-badge { color: rgba(255, 255, 255, 0.45); font-size: 12px; font-weight: 800; letter-spacing: 3px; margin-bottom: 12px; text-transform: uppercase; }
-    .comp-pure-name { color: #ffffff; font-size: 30px; font-weight: 800; letter-spacing: 0.5px; margin: 0; text-transform: uppercase; text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
+    /* কন্টেন্ট প্যানেল (কোনো বাটন বা অতিরিক্ত ব্যাজ ছাড়া সম্পূর্ণ ক্লিন) */
+    .text-container-overlay { position: relative; z-index: 2; padding: 0px 20px 65px 20px; text-align: center; width: 100%; box-sizing: border-box; }
+    
+    /* কোম্পানির স্পষ্ট ও ওজস্বী রাজকীয় নাম */
+    .comp-pure-name {
+      color: #ffffff; font-size: 32px; font-weight: 800; letter-spacing: 0.5px; margin: 0;
+      text-transform: uppercase; text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+    }
   </style>
 </head>
 <body>
@@ -647,19 +652,18 @@ sovereign_carousel_html = """
   <div class="slider">
 """
 
-# লুপের মাধ্যমে পুরো ৫০০টি কাস্টম মেটালিক কালার কার্ড আলাদা আলাদা স্ট্রিং-এ ইনজেক্ট করা হচ্ছে
+# লুপের মাধ্যমে পুরো ৫০০টি কাস্টম মেটালিক কালার কার্ড জেনারেট হচ্ছে আলাদা আলাদা রঙে
 for i, comp in enumerate(fortune_global_500_database):
     current_gradient = luxury_couture_gradients[i % len(luxury_couture_gradients)]
     sovereign_carousel_html += f"""
     <div class="apple-sovereign-card" style="background: {current_gradient};">
         <div class="text-container-overlay">
-            <div class="rank-badge">{comp['rank']}</div>
             <div class="comp-pure-name">{comp['name']}</div>
         </div>
     </div>
     """
 
-# এইচটিএমএল ক্লোজিং এবং স্ক্রিপ্ট অংশ
+# এইচটিএমএল ক্লোজিং এবং স্লাইডার স্ক্রিপ্ট অংশ
 sovereign_carousel_html += """
   </div>
   <script type="text/javascript" src="https://jquery.com"></script>
@@ -676,11 +680,5 @@ sovereign_carousel_html += """
 </html>
 """
 
-# ------------------------------------------------------------------
-# VI. ERROR-FREE RENDER PROTOCOL (STREAMLIT NATIVE HTML COMPONENT)
-# ------------------------------------------------------------------
-import streamlit.components.v1 as components
-
-# লেটেস্ট এরর-ফ্রি মেথড দিয়ে আপনার লাক্সারিয়াস ক্যারোজেল রেন্ডার করা হলো
+# ⚡ স্ট্রিমলিটের লেটেস্ট এরর-ফ্রি মেথড দিয়ে আপনার লাক্সারিয়াস কাস্টম ক্যারোজেল রেন্ডার করা হলো
 components.html(sovereign_carousel_html, height=580, scrolling=False)
-
