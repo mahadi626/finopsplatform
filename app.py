@@ -387,67 +387,6 @@ import hashlib
 import os
 
 # ==============================================================================
-# 💎 EXTRA LUXURIOUS SECURITY MATRIX & BACKEND CORE ENGINE
-# ==============================================================================
-
-st.markdown("---")
-st.markdown("##  Ultra-Enterprise Premium Security Core")
-st.caption("Active Military-Grade Protocols & Cloud Governance Framework")
-
-# ছদ্মবেশী ডেটাবেজ বা সেশন স্টেট ইনিশিয়ালাইজেশন
-if "user_risk_score" not in st.session_state:
-    st.session_state.user_risk_score = 0.0
-if "byok_vault" not in st.session_state:
-    st.session_state.byok_vault = {}
-
-# লেআউট তৈরি
-col1, col2 = st.columns(2)
-
-with col1:
-    st.markdown("### 🛡️ Real-Time Governance Status")
-    
-    # ১. Zero-Trust Architecture (জিরো-ট্রাস্ট আর্কিটেকচার)
-    st.write("*1. Zero-Trust Contextual Verification:*")
-    current_ip = "192.168.1.144"  # ডেমো সেশন আইপি ফেচিং
-    current_device = "Corporate Mac Studio (Apple M4 Ultra)"
-    
-    st.info(f"🔒 Trust Status: **CONTINUOUSLY VERIFYING**\n\n📌 Session Node: {current_ip} | Device Signature: {current_device}")
-    
-    # ২. AI-Powered DLP (ডাটা লস প্রিভেনশন এআই মনিটর)
-    st.write("*2. AI-Powered DLP Telemetry:*")
-    # ইউজার যদি খুব দ্রুত ডেটা স্ক্র্যাপ করতে চায় বা বড় কোয়েরি দেয়, রিস্ক স্কোর বাড়বে
-    download_trigger = st.checkbox("Simulate Bulk CSV Data Export Request")
-    
-    if download_trigger:
-        st.session_state.user_risk_score = 0.85
-        st.error(f"🚨 AI DLP Alert: Dynamic Exfiltration Risk Detected! Risk Index: {st.session_state.user_risk_score * 100}%")
-        st.warning("Action Intercepted: Multi-Factor Authentication Challenged automatically.")
-    else:
-        st.session_state.user_risk_score = 0.02
-        st.success(f"✅ AI DLP Guard: Normal Operational Behavior. Risk Index: {st.session_state.user_risk_score * 100}%")
-
-with col2:
-    st.markdown("### 🔑 Cryptographic Encryption Controls")
-    
-    # ৩. Hardware Security Module (HSM) & BYOK (Bring Your Own Key)
-    st.write("*3. HSM Infrastructure & BYOK (Bring Your Own Key):*")
-    customer_kms_key = st.text_input("Enter Corporate AWS KMS / HSM Key ARN:", 
-                                      value="arn:aws:kms:us-east-1:123456789012:key/apple-hsm-vault-v9", 
-                                      type="password")
-    
-    if customer_kms_key:
-        st.success("🔐 Vault Connection: Root Key Managed via Customer KMS Module.")
-        
-    # ৪. Quantum-Resistant Encryption (কোয়ান্টাম-প্রতিরোধী সাইফার সিমুলেশন)
-    st.write("*4. Quantum-Resistant Cryptography Status:*")
-    # পাইথনে কোয়ান্টাম সেফ কি অ্যালগরিদম (যেমন Lattice-based cryptography) এর জন্য SHA-512 বেসড HMAC সাইনিং ট্র্যাক
-    dummy_payload = "Apple_Cloud_Spend_Data_2026"
-    quantum_salt = os.urandom(32)
-    post_quantum_hash = hmac.new(quantum_salt, dummy_payload.encode(), hashlib.sha512).hexdigest()[:32]
-    
-    st.code(f"Quantum-Safe Hash (Kyber/Dilithium L3 equivalent):\n{post_quantum_hash}...", language="bash")
-
-# ==============================================================================
 # TIER-0 SOVEREIGN ARCHITECTURE: MAXIMUM ENTERPRISE LUXURY SECURITY MATRIX
 # ==============================================================================
 st.markdown("---")
