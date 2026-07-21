@@ -172,7 +172,7 @@ if not st.session_state['logged_in']:
     with col2:
         st.markdown("""
         <div class='main-card'>
-            <div class='gate-title'>FORTUNE 500 SECURE GATEWAY</div>
+            <div class='gate-title'>FORTUNE GLOBAL 500 SECURE GATEWAY</div>
             <div class='gate-subtitle'>Autonomous FinOps & Cloud Governance Infrastructure Ver 3.0</div>
             <div class='sso-button'>
                 <img src='https://wikimedia.org_\"G\"_logo.svg' style='width: 18px; margin-right: 12px;'/>
