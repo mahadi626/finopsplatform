@@ -551,3 +551,95 @@ def render_advanced_fortune_500_features():
 # Execute Premium System Layout
 render_advanced_fortune_500_features()
 # ==============================================================================
+# ------------------------------------------------------------------
+# V. FORTUNE 500 CINEMATIC CAROUSEL INTERFACE (FIXED VERSION)
+# ------------------------------------------------------------------
+import streamlit.components.v1 as components
+
+st.write("<br><br>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; color: #ffffff; letter-spacing: 2px; font-weight: 800; margin-bottom: 5px;'>APEX FORTUNE 500 CORE</h2>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #8b949e; font-size: 14px; letter-spacing: 4px; text-transform: uppercase;'>Real-Time Sovereign Cloud Infrastructure & Telemetry Hub</p>", unsafe_allow_html=True)
+
+# শীর্ষ কোম্পানিগুলোর প্রিমিয়াম ডাইনামিক ডেটাবেজ
+fortune_500_database = [
+    {"name": "NVIDIA", "rank": "RANK #1", "metric": "$3.3T Market Cap", "desc": "Autonomous Cloud Architecture", "img": "https://unsplash.com"},
+    {"name": "APPLE", "rank": "RANK #2", "metric": "$3.4T Market Cap", "desc": "Sovereign FinOps Control Vault", "img": "https://unsplash.com"},
+    {"name": "MICROSOFT", "rank": "RANK #3", "metric": "$3.2T Market Cap", "desc": "DoD IL5 Compliance Framework", "img": "https://unsplash.com"},
+    {"name": "ALPHABET", "rank": "RANK #4", "metric": "FedRAMP High Status", "desc": "Post-Quantum Cipher Nodes", "img": "https://unsplash.com"},
+    {"name": "AMAZON", "rank": "RANK #5", "metric": "Global Ledger Integration", "desc": "Multi-Cloud Migration Core", "img": "https://unsplash.com"},
+    {"name": "META", "rank": "RANK #6", "metric": "90-Day Predictive Matrix", "desc": "AI Compute Infrastructure", "img": "https://unsplash.com"},
+    {"name": "SAUDI ARAMCO", "rank": "RANK #7", "metric": "Sovereign Node Active", "desc": "Heavy Compute Governance", "img": "https://unsplash.com"},
+    {"name": "TESLA", "rank": "RANK #8", "metric": "EPA Carbon Certified", "desc": "Sustained Automated Telemetry", "img": "https://unsplash.com"}
+]
+
+# HTML/CSS ক্যারোজেল - যেখানে ছবি লোড না হলেও টেক্সট ও ব্যাকগ্রাউন্ড গ্লো কাজ করবে
+luxurious_carousel_html = """
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://cloudflare.com"/>
+  <link rel="stylesheet" type="text/css" href="https://cloudflare.com"/>
+  <link href="https://googleapis.com" rel="stylesheet">
+  <style>
+    body { background-color: #0e1117; font-family: 'Inter', sans-serif; margin: 0; padding: 0; overflow: hidden; }
+    .slider { width: 96%; margin: 10px auto; }
+    .card {
+      position: relative; 
+      background: linear-gradient(145deg, #0a0a0f, #14141f);
+      border-radius: 20px; margin: 0 15px; overflow: hidden; height: 400px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.8); border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); cursor: pointer;
+    }
+    .card:hover { transform: translateY(-8px) scale(1.02); border-color: #6c5ce7; box-shadow: 0 20px 50px rgba(108, 92, 231, 0.25); }
+    .card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; transition: all 0.4s ease; }
+    .card:hover img { opacity: 0.65; transform: scale(1.05); }
+    .info-overlay { position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, rgba(14, 17, 23, 0.98) 45%); padding: 30px 20px 25px 20px; box-sizing: border-box; }
+    .top-badge { background: rgba(108, 92, 231, 0.2); border: 1px solid #6c5ce7; color: #a29bfe; padding: 3px 10px; border-radius: 8px; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; display: inline-block; margin-bottom: 12px; }
+    .company-name { font-size: 26px; font-weight: 800; color: #ffffff; margin: 0; letter-spacing: -0.5px; }
+    .company-metric { font-size: 12px; color: #00ff66; font-weight: 600; margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
+    .company-desc { font-size: 13px; color: #9ca3af; margin: 10px 0 20px 0; line-height: 1.4; }
+    .stream-btn { width: 100%; background-color: #ffffff; color: #050508; border: none; padding: 12px; border-radius: 12px; font-weight: 800; font-size: 13px; letter-spacing: 1px; cursor: pointer; text-transform: uppercase; transition: all 0.2s ease; }
+    .stream-btn:hover { background-color: #6c5ce7; color: #ffffff; }
+    .slick-dots li button:before { color: #ffffff; opacity: 0.2; font-size: 8px; }
+    .slick-dots li.slick-active button:before { color: #6c5ce7; opacity: 1; font-size: 10px; }
+  </style>
+</head>
+<body>
+  <div class="slider">
+"""
+
+for comp in fortune_500_database:
+    luxurious_carousel_html += f"""
+    <div class="card">
+      <img src="{comp['img']}" onerror="this.style.display='none';">
+      <div class="info-overlay">
+        <div class="top-badge">{comp['rank']}</div>
+        <div class="company-name">{comp['name']}</div>
+        <div class="company-metric">● {comp['metric']}</div>
+        <div class="company-desc">{comp['desc']}</div>
+        <button class="stream-btn" onclick="alert('Initializing Secure Matrix Tunneling into {comp['name']}...')">Stream Telemetry</button>
+      </div>
+    </div>
+    """
+
+luxurious_carousel_html += """
+  </div>
+  <script type="text/javascript" src="https://jquery.com"></script>
+  <script type="text/javascript" src="https://cloudflare.com"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.slider').slick({
+        dots: true, infinite: true, speed: 600, slidesToShow: 3, slidesToScroll: 1,
+        autoplay: true, autoplaySpeed: 3500, cssEase: 'cubic-bezier(0.25, 1, 0.5, 1)',
+        responsive: [
+          { breakpoint: 1200, settings: { slidesToShow: 2 } },
+          { breakpoint: 768, settings: { slidesToShow: 1 } }
+        ]
+      });
+    });
+  </script>
+</body>
+</html>
+"""
+
+components.html(luxurious_carousel_html, height=540, scrolling=False)
