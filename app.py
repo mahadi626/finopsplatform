@@ -551,7 +551,7 @@ def render_advanced_fortune_500_features():
 # Execute Premium System Layout
 render_advanced_fortune_500_features()
 # ------------------------------------------------------------------
-# V. THE FORTUNE GLOBAL 500 COUTURE MONOLITH (ULTRA LUXURY & CLEAN)
+# V. CHRONO-TELEMETRY IMMERSIVE CORE (AI-CURATED ULTIMATE LUXURY)
 # ------------------------------------------------------------------
 import streamlit as st
 import streamlit.components.v1 as components
@@ -581,15 +581,15 @@ for r in range(1, 501):
     if r-1 < len(real_fortune_global_500):
         c_name = real_fortune_global_500[r-1]
     else:
-        c_name = f"GLOBAL NODE #{r}"
-    fortune_global_500_database.append({"name": c_name})
+        c_name = f"SOVEREIGN GLOBAL NODE #{r}"
+    fortune_global_500_database.append({"name": c_name, "rank": f"RANK #{r}"})
 
-# 🎨 এআই-কিউরেটেড ১০টি সম্পূর্ণ আলাদা, গভীর, গাম্ভীর্যপূর্ণ ও আল্ট্রা-লাক্সারিয়াস রঙের মেলবন্ধন
+# 🎨 এআই-কিউরেটেড ১০টি গম্ভীর মেটালিক কালার প্যালেট (যা ১ সেকেন্ড পর পর স্ক্রিনের ব্যাকগ্রাউন্ডে স্বয়ংক্রিয়ভাবে চেইঞ্জ হবে)
 luxury_couture_gradients = [
     "linear-gradient(180deg, #1c1c1c 0%, #0c0c0c 45%, #050505 100%)",  # 1. Brushed Obsidian (ম্যাট ডার্ক)
     "linear-gradient(180deg, #1b3a4b 0%, #0d1f2d 45%, #050b10 100%)",  # 2. Sovereign Navy Slate (ভারী প্রাতিষ্ঠানিক)
     "linear-gradient(180deg, #2c1a4d 0%, #160d29 45%, #0a0514 100%)",  # 3. Royal Midnight Velvet (আভিজাত্য বেগুনী)
-    "linear-gradient(180deg, #3a3a3a 0%, #222222 45%, #0f0f0f 100%)",  # 4. Burnished Titanium Steel (মিলিটারি গ্রে)
+    "linear-gradient(180deg, #3a3a3a 0%, #222222 45%, #0f0f0f 100%)",  # 4. Burnished Titanium Steel (মিলিタリー গ্রে)
     "linear-gradient(180deg, #4a1525 0%, #250a12 45%, #100408 100%)",  # 5. Oxblood Enclave Red (হাই-সিকিউরিটি ভল্ট)
     "linear-gradient(180deg, #0f343a 0%, #071b1e 45%, #020a0b 100%)",  # 6. Deep Dark Emerald (সাইবার ইন্টেলিজেন্স)
     "linear-gradient(180deg, #5c3a21 0%, #311e11 45%, #150d07 100%)",  # 7. Smoked Antique Bronze (রাজকীয় ব্রোঞ্জ)
@@ -598,87 +598,161 @@ luxury_couture_gradients = [
     "linear-gradient(180deg, #222c3c 0%, #11161e 45%, #07090d 100%)"   # 10. Deep Space Iron (ফিউচার ক্লাউড)
 ]
 
-# এইচটিএমএল স্ট্রাকচার শুরু (টাইটেল এবং স্লাইডার এক সাথে নিখুঁতভাবে ইনডেন্ট করা)
-sovereign_carousel_html = """
+# এইচটিএমএল স্ট্রাকচার শুরু (১ সেকেন্ড ক্রোনো-ক্যারোজেল এবং এক্সক্লুসিভ টাইটেল এক সাথে)
+sovereign_immersive_html = """
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="https://cloudflare.com"/>
-  <link rel="stylesheet" type="text/css" href="https://cloudflare.com"/>
   <link href="https://googleapis.com" rel="stylesheet">
   <style>
     body { background-color: #0e1117; font-family: 'Inter', sans-serif; margin: 0; padding: 0; overflow: hidden; text-align: center; }
     
-    /* আপনার প্রথম স্ক্রিনশটের মতো নিখুঁত বড় হাতের স্পেসড-আউট টাইটেল স্টাইল */
-    .lux-title-container { margin-top: 25px; margin-bottom: 40px; }
+    /* 🏛️ আপনার রিকোয়ারমেন্ট অনুযায়ী নতুন আল্ট্রা-লাক্সারিয়াস, এক্সক্লুসিভ ও গাম্ভীর্যপূর্ণ নিচে নিচে সাজানো সিগনেচার টাইটেল 🏛️ */
+    .lux-title-container { margin-top: 30px; margin-bottom: 35px; }
     .lux-title {
-        color: #ffffff; font-size: 34px; font-weight: 300; letter-spacing: 7px; line-height: 1.6; margin: 0; text-transform: uppercase;
+        color: #ffffff; font-size: 34px; font-weight: 300; letter-spacing: 8px; line-height: 1.6; margin: 0; text-transform: uppercase;
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
     }
     .lux-subtitle {
-        color: #8b949e; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; margin-top: 15px; font-weight: 600; opacity: 0.8;
+        color: #8b949e; font-size: 11px; letter-spacing: 5px; text-transform: uppercase; margin-top: 15px; font-weight: 600; opacity: 0.75;
     }
     
-    .slider { width: 92%; margin: 10px auto; }
-    
-    /* আল্ট্রা-লা克斯ারিয়াস মোনোলিথ বেস কার্ড */
-    .apple-sovereign-card {
-      position: relative; border-radius: 16px; margin: 0 10px; overflow: hidden; height: 380px;
-      display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
-      box-sizing: border-box; border: 1px solid rgba(255, 255, 255, 0.03);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75); transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); cursor: pointer;
+    /* থিয়েটার স্টাইল ফুল-স্ক্রিন মোনোলিথ ডিসপ্লে কন্টেইনার (কোনো স্লাইডারের বক্স বর্ডার বা বাটন থাকবে না) */
+    .monolith-display-cabinet {
+        width: 88%;
+        margin: 0 auto;
+        border-radius: 20px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        box-shadow: 0 25px 55px rgba(0, 0, 0, 0.8);
+        position: relative;
+        overflow: hidden;
+        transition: background 0.6s ease-in-out; /* ছবি/রঙ পরিবর্তনের সময় সিল্কি ট্রানজিশন ফেড এফেক্ট */
     }
     
-    /* 💜 মাউস নিলেই আপনার প্রিয় রাজকীয় নিওন বেগুনী বাতি জ্বলে ওঠার জাদুকরী সিস্টেম 💜 */
-    .apple-sovereign-card:hover {
-      transform: translateY(-6px); border-color: #a29bfe;
-      box-shadow: 0 0 35px rgba(138, 43, 226, 0.7), inset 0 0 20px rgba(138, 43, 226, 0.4);
+    /* 💜 মাউস কার্সার নিলেই আপনার সেই প্রিয় রাজকীয় নিоন বেগুনী বাতি জ্বলে ওঠার ম্যাজিক সিস্টেম 💜 */
+    .monolith-display-cabinet:hover {
+        border-color: #a29bfe;
+        box-shadow: 0 0 40px rgba(138, 43, 226, 0.75), inset 0 0 25px rgba(138, 43, 226, 0.4);
     }
     
-    /* কন্টেন্ট প্যানেল (কোনো বাটন বা অতিরিক্ত ব্যাজ ছাড়া সম্পূর্ণ ক্লিন) */
-    .text-container-overlay { position: relative; z-index: 2; padding: 0px 20px 65px 20px; text-align: center; width: 100%; box-sizing: border-box; }
+    .overlay-content {
+        position: relative;
+        z-index: 5;
+        text-align: center;
+    }
     
-    /* কোম্পানির স্পষ্ট ও ওজস্বী রাজকীয় নাম */
-    .comp-pure-name {
-      color: #ffffff; font-size: 32px; font-weight: 800; letter-spacing: 0.5px; margin: 0;
-      text-transform: uppercase; text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+    .rank-indicator {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+    
+    /* কোম্পানির অতি সুনির্দিষ্ট স্পষ্ট এবং সর্বোচ্চ দামি ফন্ট লুক */
+    .company-sovereign-name {
+        color: #ffffff;
+        font-size: 40px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        margin: 0;
+        text-transform: uppercase;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.9);
+        transition: all 0.3s ease;
+    }
+    
+    .monolith-display-cabinet:hover .company-sovereign-name {
+        color: #c499ff;
+        text-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
     }
   </style>
 </head>
 <body>
+
+  <!-- নতুন এক্সক্লুসিভ গাম্ভীর্যপূর্ণ মেগা টাইটেল লেআউট -->
   <div class="lux-title-container">
-      <div class="lux-title">FORTUNE<br>GLOBAL<br>500<br>SECURE<br>GATEWAY</div>
-      <div class="lux-subtitle">Autonomous Infrastructure Telemetry Pipeline v3.0</div>
+      <div class="lux-title">APEX<br>TELEMETRY<br>MONOLITH<br>CORE<br>HUB</div>
+      <div class="lux-subtitle">Autonomous Sovereign Grid Telemetry Datafeed v3.0</div>
   </div>
-  <div class="slider">
+
+  <!-- ১ সেকেন্ডের সিনেমাটিক মোনোলিথ ডিসপ্লে ক্যাবিনেট -->
+  <div id="immersive-monolith" class="monolith-display-cabinet">
+      <div class="overlay-content">
+          <div id="company-rank" class="rank-indicator">INITIALIZING SOVEREIGN ENGINE...</div>
+          <div id="company-name" class="company-sovereign-name">DATAFEED DEPLOYED</div>
+      </div>
+  </div>
+
+  <script type="text/javascript">
+    // পাইথনের ৫০০ কোম্পানির ডেটাবেজ ও এআই গ্রেডিয়েন্ট কালার অ্যারে জাভাস্ক্রিপ্টে লোড করা হলো
+    const companyDatabase = [];
+    const gradients = [
+        "linear-gradient(180deg, #1c1c1c 0%, #0c0c0c 45%, #050505 100%)",
+        "linear-gradient(180deg, #1b3a4b 0%, #0d1f2d 45%, #050b10 100%)",
+        "linear-gradient(180deg, #2c1a4d 0%, #160d29 45%, #0a0514 100%)",
+        "linear-gradient(180deg, #3a3a3a 0%, #222222 45%, #0f0f0f 100%)",
+        "linear-gradient(180deg, #4a1525 0%, #250a12 45%, #100408 100%)",
+        "linear-gradient(180deg, #0f343a 0%, #071b1e 45%, #020a0b 100%)",
+        "linear-gradient(180deg, #5c3a21 0%, #311e11 45%, #150d07 100%)",
+        "linear-gradient(180deg, #16222f 0%, #0b1118 45%, #040609 100%)",
+        "linear-gradient(180deg, #321b4a 0%, #1a0d26 45%, #0b0512 100%)",
+        "linear-gradient(180deg, #222c3c 0%, #11161e 45%, #07090d 100%)"
+    ];
+  </script>
 """
 
-# লুপের মাধ্যমে পুরো ৫০০টি কাস্টম মেটালিক কালার কার্ড জেনারেট হচ্ছে আলাদা আলাদা রঙে
+# পাইথন দিয়ে ৫০০টি কোম্পানির নাম ডাইনামিক্যালি জাভাস্ক্রিপ্ট পুলে ইনজেক্ট করা হচ্ছে
+js_injection = "\n"
 for i, comp in enumerate(fortune_global_500_database):
-    current_gradient = luxury_couture_gradients[i % len(luxury_couture_gradients)]
-    sovereign_carousel_html += f"""
-    <div class="apple-sovereign-card" style="background: {current_gradient};">
-        <div class="text-container-overlay">
-            <div class="comp-pure-name">{comp['name']}</div>
-        </div>
-    </div>
-    """
+    js_injection += f"    companyDatabase.push({{ name: '{comp['name']}', rank: '{comp['rank']}' }});\n"
 
-# এইচটিএমএল ক্লোজিং এবং স্লাইডার স্ক্রিপ্ট অংশ
-sovereign_carousel_html += """
-  </div>
-  <script type="text/javascript" src="https://jquery.com"></script>
-  <script type="text/javascript" src="https://cloudflare.com"></script>
+sovereign_immersive_html += js_injection
+
+# ১ সেকেন্ডের ক্রোনো-টাইমার লজিক স্ক্রিপ্ট সংযোজন করা হলো
+sovereign_immersive_html += """
   <script type="text/javascript">
-    $(document).ready(function(){
-      $('.slider').slick({
-        dots: false, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1,
-        autoplay: true, autoplaySpeed: 2800, arrows: false
-      });
-    });
+    let currentIndex = 0;
+
+    function renderNextSovereignNode() {
+        const monolith = document.getElementById('immersive-monolith');
+        const rankText = document.getElementById('company-rank');
+        const nameText = document.getElementById('company-name');
+        
+        // ১ সেকেন্ড পর পর ডেটা পরিবর্তনের সময় একটি সিল্কি ফেড-আউট ট্রানজিশন
+        nameText.style.opacity = 0.3;
+        rankText.style.opacity = 0.3;
+        
+        setTimeout(() => {
+            const currentItem = companyDatabase[currentIndex];
+            const currentGradient = gradients[currentIndex % gradients.length];
+            
+            // কন্টেন্ট এবং ব্যাকগ্রাউন্ড কালার রাজকীয়ভাবে এক সাথে পরিবর্তন করা
+            monolith.style.background = currentGradient;
+            rankText.innerText = currentItem.rank;
+            nameText.innerText = currentItem.name;
+            
+            nameText.style.opacity = 1;
+            rankText.style.opacity = 1;
+            
+            // পরবর্তী স্লটে যাওয়া (৫০০ পূর্ণ হলে আবার ১ থেকে শুরু হবে)
+            currentIndex = (currentIndex + 1) % companyDatabase.length;
+        }, 150);
+    }
+
+    // ⏱️ ঠিক ১ সেকেন্ড (1000ms) পর পর ঘড়ির কাঁটার মতো স্বয়ংক্রিয়ভাবে পরিবর্তন হবে! ⏱️
+    setInterval(renderNextSovereignNode, 1000);
+    renderNextSovereignNode(); // প্রাথমিক লঞ্চ
   </script>
 </body>
 </html>
 """
 
-# ⚡ স্ট্রিমলিটের লেটেস্ট এরর-ফ্রি মেথড দিয়ে আপনার লাক্সারিয়াস কাস্টম ক্যারোজেল রেন্ডার করা হলো
-components.html(sovereign_carousel_html, height=580, scrolling=False)
+# ⚡ স্ট্রিমলিটের লেটেস্ট বাগমুক্ত মেথড দিয়ে আপনার আল্ট্রা-লাক্সারিয়াস ইন্টারফেস রেন্ডার করা হলো
+components.html(sovereign_immersive_html, height=580, scrolling=False)
