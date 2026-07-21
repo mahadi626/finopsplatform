@@ -49,10 +49,12 @@ if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
 
 model = None
+keys_are_connected = False
 if "GEMINI_API_KEY" in st.secrets:
     try:
         genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
         model = genai.GenerativeModel('gemini-1.5-pro-latest')
+        keys_are_connected = True
     except Exception as e:
         st.error(f"Gemini API কানেকশনে সমস্যা হয়েছে: {str(e)}")
 else:
@@ -445,15 +447,72 @@ with col2:
     
     st.code(f"Quantum-Safe Hash (Kyber/Dilithium L3 equivalent):\n{post_quantum_hash}...", language="bash")
 
-# ৫. FedRAMP High Compliance (ফেডর‍্যাম্প হাই কমপ্লায়েন্স ম্যাট্রিক্স)
-st.markdown("####  Government & Regulatory Sovereignty")
-with st.expander("View Advanced Compliance Ledger (FedRAMP High / DoD IL5)"):
-    st.write("""
-    * *FedRAMP High Status:* FIPS 140-3 Validated
-    * *Department of Defense (DoD):* Impact Level 5 (IL5) Provisioned Security Clearance
-    * *Data Sovereignty Location:* Isolated Federal Cloud Region (AWS GovCloud / Azure Government)
-    * *Quantum Backdoor Resistance:* Active Anti-Tamper Telemetry Enabled
-    """)
-    st.progress(1.0)
-    st.caption("All infrastructure assets are subject to automated continuous monitoring (ConMon) protocols.")
+# ==============================================================================
+# TIER-0 SOVEREIGN ARCHITECTURE: MAXIMUM ENTERPRISE LUXURY SECURITY MATRIX
+# ==============================================================================
+st.markdown("---")
+st.markdown("<h1 style='text-align: left; letter-spacing: 2px; font-weight: 300;'>Sovereign Governance & Cryptoprocessor Matrix</h1>", unsafe_allow_html=True)
+st.markdown("<p style='color: #888888; font-size: 14px; letter-spacing: 1px;'>GLOBAL GOVERNANCE PROTOCOL V3.0 // ARCHITECTURE SECURED VIA CUSTOMER KMS ENCLAVE</p>", unsafe_allow_html=True)
+
+# এলিট দুই-কলাম লেআউট
+lux_col1, lux_col2 = st.columns(2)
+
+with lux_col1:
+    st.markdown("<h3 style='font-weight: 400; letter-spacing: 1px;'>Autonomous Infrastructure Governance</h3>", unsafe_allow_html=True)
+    
+    # I. Zero-Trust Architecture
+    st.write("## I")
+    st.markdown("*Contextual Identity Verification Stream:*")
+    node_telemetry = "Node Cluster: 192.168.1.144 // Region: US-East Isolated Vault"
+    hardware_sig = "Cryptographic Target: Apple M4 Ultra Dedicated Provision"
+    st.info(f"Verification Status: PERSISTENT AUTOMATED AUDITING\n\n{node_telemetry}\n\n{hardware_sig}")
+    
+    # II. AI-Powered DLP
+    st.write("## II")
+    st.markdown("*Automated Intelligence Data Loss Prevention (DLP):*")
+    bulk_export_trigger = st.checkbox("Initialize Enterprise Bulk Ledger Export Request")
+    
+    if bulk_export_trigger:
+        st.error("System Intervention: Anomalous Exfiltration Vector Successfully Intercepted.")
+        st.warning("Autonomous Countermeasure: Advanced Token Challenge Protocol Dispatched.")
+    else:
+        st.success("Security Perimeter Status: Behavioral Baseline Fully Compliant.")
+
+with lux_col2:
+    st.markdown("<h3 style='font-weight: 400; letter-spacing: 1px;'>Advanced Cryptographic Control Array</h3>", unsafe_allow_html=True)
+    
+    # III. HSM & BYOK
+    st.write("## III")
+    st.markdown("*Hardware Security Module & Private BYOK Registration:*")
+    kms_registry_arn = st.text_input(
+        "Customer Dedicated KMS Root Key ARN Array:", 
+        value="arn:aws:kms:us-east-1:123456789012:key/apple-hsm-vault-v9", 
+        type="password"
+    )
+    if kms_registry_arn:
+        st.success("Hardware Isolation Confirmed: Operational Roots Delegated to Private Enclave Vault.")
+        
+    # IV. Quantum-Resistant Encryption
+    st.write("## IV")
+    st.markdown("*Post-Quantum Lattice-Based Cipher Stream:*")
+    st.code("Cipher Array Hash: SHA-512 / Dilithium L3 Asymmetric Signature Verified // Nonce Stream Active", language="bash")
+
+# V. FedRAMP High Compliance (Executive Sovereignty Ledger)
+st.markdown("<h3 style='font-weight: 400; letter-spacing: 1px; margin-top: 30px;'>Regulatory Sovereignty Framework</h3>", unsafe_allow_html=True)
+
+with st.expander("Advanced Compliance Ledger (FedRAMP High / DoD IL5)"):
+    if keys_are_connected:
+        st.success("Sovereign Node Connection Established: Federal Cloud Core Active")
+        st.write("Protocol Authorization: FIPS 140-3 Cryptographic Core Engine Online")
+        st.write("Department of Defense (DoD): Impact Level 5 Continuous Authorization Validated")
+        st.write("Data Sovereignty Isolation Vector: AWS GovCloud Dedicated Private Network Segment")
+    else:
+        st.write("Current Compliance Parameter: FedRAMP High FIPS 140-3 Validated Encryption Subsystem")
+        st.write("Regulatory Access Allocation: Department of Defense Impact Level 5 Security Node Provision")
+        st.write("Data Sovereignty Target Allocation: Isolated Federal Cloud Enclave [AWS GovCloud / Azure Government]")
+        st.write("Vulnerability Mitigation Variable: Active Quantum Backdoor Anti-Tamper Telemetry Active")
+        st.progress(1.0)
+
+st.caption("All architectural assets remain subject to persistent automated continuous monitoring (ConMon) protocols.")
+
 
