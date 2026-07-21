@@ -550,11 +550,10 @@ def render_advanced_fortune_500_features():
 
 # Execute Premium System Layout
 render_advanced_fortune_500_features()
-# ==============================================================================
 # ------------------------------------------------------------------
-# V. COMPLETE FORTUNE GLOBAL 500 REAL DATABASE (PURE IMAGE & NAME)
+# V. THE FORTUNE GLOBAL 500 COUTURE MONOLITH (ULTIMATE MASTERPIECE)
 # ------------------------------------------------------------------
-import streamlit.components.v1 as components
+import streamlit as st
 
 st.write("<br><br>", unsafe_allow_html=True)
 
@@ -570,140 +569,106 @@ real_fortune_global_500 = [
     "PEPSICO", "INTEL", "AIRBUS", "BOEING", "LOCKHEED MARTIN", "CATERPILLAR", "FEDEX", "UPS", "LENOVO GROUP", 
     "PANASONIC", "LG ELECTRONICS", "RELIANCE INDUSTRIES", "TATA MOTORS", "STATE BANK OF INDIA", "HUAWEI", "TSMC", 
     "XIAOMI", "BYD", "CATL", "PETROBRAS", "VALE", "VOLVO GROUP", "ERICSSON", "IKEA", "H&M GROUP", "NOVO NORDISK",
-    "SONY GROUP", "HONDA MOTOR", "NIPPON STEEL", "HITACHI", "MITSUBISHI", "MITSUI", "SUMITOMO", "MIGROS",
-    "TARGET", "CITIGROUP", "BANK OF AMERICA", "WELLS FARGO", "JPMORGAN CHASE", "GOLDMAN SACHS", "MORGAN STANLEY",
-    "STATE FARM", "PRUDENTIAL", "ALLIANZ", "AXA", "PUDONG DEVELOPMENT BANK", "INDUSTRIAL BANK", "SINOPEC GROUP",
-    "HONDA MOTOR", "NISSAN MOTOR", "SAIC MOTOR", "FAW GROUP", "DONGFENG MOTOR", "GAC GROUP", "GEELY AUTOMOBILE",
-    "DENSO", "AISIN", "PANASONIC HOLDINGS", "MITSUBISHI ELECTRIC", "FUJITSU", "CANON", "TOSHIBA", "NEC",
-    "BOEING", "AIRBUS", "GENERAL DYNAMICS", "NORTHROP GRUMMAN", "RAYTHEN TECHNOLOGIES", "BMT GROUP", "ORACLE",
-    "CISCO SYSTEMS", "ADOBE", "SALESFORCE", "SAP", "IBM", "ACCENTURE", "TATA CONSULTANCY SERVICES", "INFOSYS",
-    "HP INC", "LENOVO", "ASUS", "ACER", "FOXCONN INTERCONNECT", "PEGATRON", "QUANTA COMPUTER", "COMPAL ELECTRONICS",
-    "UNITED MICROELECTRONICS", "ASE TECHNOLOGY", "MEDIATEK", "SK HYNIX", "MICRON TECHNOLOGY", "QUALCOMM", "AMD",
-    "BROADCOM", "TEXAS INSTRUMENTS", "ANALOG DEVICES", "NXP SEMICONDUCTORS", "INFINEON TECHNOLOGIES", "ASML",
-    "TOKYO ELECTRON", "LAM RESEARCH", "APPLIED MATERIALS", "KLA CORPORATION", "SYNOPSYS", "CADENCE DESIGN SYSTEMS",
-    "PFIZER", "MODERNA", "ASTRAZENECA", "GLAXOSMITHKLINE", "SANOFI", "NOVARTIS", "MERCK", "BRISTOL MYERS SQUIBB",
-    "ABBVIE", "AMGEN", "GILEAD SCIENCES", "BIOGEN", "VERTEX PHARMACEUTICALS", "REGENERON", "ILLUMINA",
-    "THERMO FISHER SCIENTIFIC", "DANAHER", "AGILENT TECHNOLOGIES", "WATERS", "PERKINELMER", "BRUKER", "METTLER TOLEDO",
-    "SIEMENS HEALTHINEERS", "PHILIPS", "GE HEALTHCARE", "MEDTRONIC", "STRYKER", "BOSTON SCIENTIFIC", "ZIMMER BIOMET",
-    "EDWARDS LIFESCIENCES", "BECTON DICKINSON", "BAXTER INTERNATIONAL", "FRESENIUS", "DAVITA", "LABCORP", "QUEST DIAGNOSTICS",
-    "COCA-COLA", "MONDELEZ INTERNATIONAL", "KRAFT HEINZ", "GENERAL MILLS", "KELLOGG", "CONAGRA BRANDS", "CAMPBELL SOUP",
-    "HERSHEY", "MARS", "FERRERO", "NESTLE PURINA", "DANONE", "UNILEVER", "HENKEL", "RECKITT BENCKISER",
-    "COLGATE-PALMOLIVE", "CHURCH & DWIGHT", "CLOROX", "ESTEE LAUDER", "LOREAL", "SHISEIDO", "COTY", "AVON PRODUCTS",
-    "NIKE", "ADIDAS", "PUMA", "UNDER ARMOUR", "ASICS", "NEW BALANCE", "SKECHERS", "VANS", "TIMBERLAND",
-    "TJX COMPANIES", "ROSS STORES", "BURLINGTON STORES", "GAP INC", "L BRANDS", "NORDSTROM", "MACYS", "KOHLS",
-    "STARBUCKS", "MCDONALDS", "YUM BRANDS", "SUBWAY", "BURGER KING", "WENDYS", "DOMINOS PIZZA", "PIZZA HUT",
-    "FEDEX", "UPS", "DHL", "MAERSK", "MSC", "COSCO SHIPPING", "CMA CGM", "HAPAG-LLOYD", "ONE",
-    "AMERICAN AIRLINES", "DELTA AIR LINES", "UNITED AIRLINES", "SOUTHWEST AIRLINES", "LUFTHANSA", "AIR FRANCE-KLM",
-    "BRITISH AIRWAYS", "EMIRATES", "QATAR AIRWAYS", "SINGAPORE AIRLINES", "CATHAY PACIFIC", "ANA", "JAL",
-    "WALT DISNEY", "NETFLIX", "WARNER BROS DISCOVERY", "PARAMOUNT GLOBAL", "SONY PICTURES", "UNIVERSAL PICTURES",
-    "VISA", "MASTERCARD", "AMERICAN EXPRESS", "DISCOVER FINANCIAL", "PAYPAL", "STRIPE", "BLOCK INC", "COINBASE"
+    "SONY GROUP", "NIPPON STEEL", "MITSUBISHI", "MITSUI", "SUMITOMO", "TARGET", "CITIGROUP", "BANK OF AMERICA", 
+    "WELLS FARGO", "JPMORGAN CHASE", "GOLDMAN SACHS", "MORGAN STANLEY", "ORACLE", "CISCO SYSTEMS", "ADOBE", 
+    "SALESFORCE", "SAP", "IBM", "ACCENTURE", "TCS", "INFOSYS", "NIKE", "ADIDAS", "PUMA", "STARBUCKS", "MCDONALDS", 
+    "WALT DISNEY", "NETFLIX", "VISA", "MASTERCARD", "PAYPAL", "STRIPE"
 ]
 
-# ৫০০টি স্লট ১০০% পূর্ণ করতে অতিরিক্ত রিয়ালিস্টিক এন্টারপ্রাইজ নাম সাজানো
 fortune_global_500_database = []
 for r in range(1, 501):
     if r-1 < len(real_fortune_global_500):
         c_name = real_fortune_global_500[r-1]
     else:
-        c_name = f"GLOBAL CONGLOMERATE CLOUD NODE #{r}"
-        
-    fortune_global_500_database.append({
-        "name": c_name,
-        "img": f"https://unsplash.com" if r % 2 == 0 else "https://unsplash.com"
-    })
+        c_name = f"SOVEREIGN GLOBAL NODE #{r}"
+    fortune_global_500_database.append({"name": c_name, "rank": f"RANK #{r}"})
 
-# ২. শুধু ছবি এবং নাম দেখানোর জন্য আল্ট্রা-ক্লিন HTML/CSS (বাটন ও অতিরিক্ত লেখা সম্পূর্ণ বর্জিত)
-pure_minimal_carousel_html = """
+# 🎨 এআই-কিউরেটেড ১০টি সম্পূর্ণ আলাদা, গভীর, গাম্ভীর্যপূর্ণ ও আল্ট্রা-লাক্সারিয়াস রঙের মেলবন্ধন
+luxury_couture_gradients = [
+    "linear-gradient(180deg, #1c1c1c 0%, #0c0c0c 45%, #050505 100%)",  # 1. Brushed Obsidian (ম্যাট ডার্ক)
+    "linear-gradient(180deg, #1b3a4b 0%, #0d1f2d 45%, #050b10 100%)",  # 2. Sovereign Navy Slate (ভারী প্রাতিষ্ঠানিক)
+    "linear-gradient(180deg, #2c1a4d 0%, #160d29 45%, #0a0514 100%)",  # 3. Royal Midnight Velvet (আভিজাত্য বেগুনী)
+    "linear-gradient(180deg, #3a3a3a 0%, #222222 45%, #0f0f0f 100%)",  # 4. Burnished Titanium Steel (মিলিটারি গ্রে)
+    "linear-gradient(180deg, #4a1525 0%, #250a12 45%, #100408 100%)",  # 5. Oxblood Enclave Red (হাই-সিকিউরিটি ভл্ট)
+    "linear-gradient(180deg, #0f343a 0%, #071b1e 45%, #020a0b 100%)",  # 6. Deep Dark Emerald (সাইবার ইন্টেলিজেন্স)
+    "linear-gradient(180deg, #5c3a21 0%, #311e11 45%, #150d07 100%)",  # 7. Smoked Antique Bronze (রাজকীয় ব্রোঞ্জ)
+    "linear-gradient(180deg, #16222f 0%, #0b1118 45%, #040609 100%)",  # 8. Dark Sapphire Matrix (নিখুঁত গভর্ন্যান্স)
+    "linear-gradient(180deg, #321b4a 0%, #1a0d26 45%, #0b0512 100%)",  # 9. Imperial Amethyst (লাক্সারি ফিনটেক)
+    "linear-gradient(180deg, #222c3c 0%, #11161e 45%, #07090d 100%)"   # 10. Deep Space Iron (ফিউচার ক্লাউড)
+]
+
+# এইচটিএমএল স্ট্রাকচার শুরু (যা একটি একক ভ্যারিয়েবলে নিখুঁতভাবে ইনডেন্ট করা)
+sovereign_carousel_html = """
 <!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="https://cloudflare.com"/>
   <link rel="stylesheet" type="text/css" href="https://cloudflare.com"/>
   <link href="https://googleapis.com" rel="stylesheet">
-  
   <style>
-    body { background-color: #0e1117; font-family: 'Inter', sans-serif; margin: 0; padding: 0; overflow: hidden; }
-    .slider { width: 92%; margin: 20px auto; }
+    body { background-color: #0e1117; font-family: 'Inter', sans-serif; margin: 0; padding: 0; overflow: hidden; text-align: center; }
     
-    /* লম্বাটে ভার্টিক্যাল পোস্টার শেইপ এবং প্রিমিয়াম ফিনিশিং */
-    .apple-pure-card {
-      position: relative; 
-      border-radius: 14px; 
-      margin: 0 8px; 
-      overflow: hidden; 
-      height: 440px; 
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      box-sizing: border-box;
+    /* 🏛️ আপনার রিকোয়ারমেন্ট অনুযায়ী নিখুঁত গাম্ভীর্যপূর্ণ বড় হাতের নিচে নিচে সাজানো টাইটেল 🏛️ */
+    .lux-title-container { margin-top: 25px; margin-bottom: 40px; }
+    .lux-title {
+        color: #ffffff; font-size: 34px; font-weight: 300; letter-spacing: 7px; line-height: 1.6; margin: 0; text-transform: uppercase;
+    }
+    .lux-subtitle {
+        color: #8b949e; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; margin-top: 15px; font-weight: 600; opacity: 0.8;
     }
     
-    /* কোম্পানির ব্যাকগ্রাউন্ড ইমেজ */
-    .apple-pure-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0.75;
+    .slider { width: 92%; margin: 10px auto; }
+    
+    /* আল্ট্রা-লাক্সারিয়াস মোনোলিথ বেস কার্ড */
+    .apple-sovereign-card {
+      position: relative; border-radius: 16px; margin: 0 10px; overflow: hidden; height: 420px;
+      display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+      box-sizing: border-box; border: 1px solid rgba(255, 255, 255, 0.03);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75); transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); cursor: pointer;
     }
     
-    /* নামের পেছনে স্মুথ ডার্ক শ্যাডো বা গ্রেডিয়েন্ট */
-    .text-container-overlay {
-      position: relative;
-      z-index: 2;
-      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
-      padding: 50px 15px 40px 15px;
-      text-align: center;
+    /* 💜 মাউস নিলেই আপনার প্রিয় রাজকীয় নিওন বেগুনী বাতি জ্বলে ওঠার জাদুকরী সিস্টেম 💜 */
+    .apple-sovereign-card:hover {
+      transform: translateY(-6px); border-color: #a29bfe;
+      box-shadow: 0 0 35px rgba(138, 43, 226, 0.7), inset 0 0 20px rgba(138, 43, 226, 0.4);
     }
     
-    /* শুধু কোম্পানির বড় এবং স্পষ্ট রাজকীয় নাম */
-    .comp-pure-name {
-      color: #ffffff;
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      margin: 0;
-      text-shadow: 0 3px 15px rgba(0,0,0,0.7);
-      text-transform: uppercase;
-      line-height: 1.3;
-    }
+    /* কন্টেন্ট প্যানেল (কোনো বাটন বা অতিরিক্ত ডেসক্রিপশন ছাড়া সম্পূর্ণ ক্লিন) */
+    .text-container-overlay { position: relative; z-index: 2; padding: 0px 20px 55px 20px; text-align: center; width: 100%; box-sizing: border-box; }
+    .rank-badge { color: rgba(255, 255, 255, 0.45); font-size: 12px; font-weight: 800; letter-spacing: 3px; margin-bottom: 12px; text-transform: uppercase; }
+    .comp-pure-name { color: #ffffff; font-size: 30px; font-weight: 800; letter-spacing: 0.5px; margin: 0; text-transform: uppercase; text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
   </style>
 </head>
 <body>
-
+  <div class="lux-title-container">
+      <div class="lux-title">FORTUNE<br>GLOBAL<br>500<br>SECURE<br>GATEWAY</div>
+      <div class="lux-subtitle">Autonomous Infrastructure Telemetry Pipeline v3.0</div>
+  </div>
   <div class="slider">
 """
 
-# লুপের মাধ্যমে পুরো ৫০০টি আসল মেগা পোস্টার কার্ড (শুধু ছবি ও নাম) তৈরি হচ্ছে
-for comp in fortune_global_500_database:
-    pure_minimal_carousel_html += f"""
-    <div class="apple-pure-card">
-        <img src="{comp['img']}">
+# লুপের মাধ্যমে পুরো ৫০০টি কাস্টম মেটালিক কালার কার্ড আলাদা আলাদা স্ট্রিং-এ ইনজেক্ট করা হচ্ছে
+for i, comp in enumerate(fortune_global_500_database):
+    current_gradient = luxury_couture_gradients[i % len(luxury_couture_gradients)]
+    sovereign_carousel_html += f"""
+    <div class="apple-sovereign-card" style="background: {current_gradient};">
         <div class="text-container-overlay">
+            <div class="rank-badge">{comp['rank']}</div>
             <div class="comp-pure-name">{comp['name']}</div>
         </div>
     </div>
     """
 
-pure_minimal_carousel_html += """
+# এইচটিএমএল ক্লোজিং এবং স্ক্রিপ্ট অংশ
+sovereign_carousel_html += """
   </div>
-
   <script type="text/javascript" src="https://jquery.com"></script>
   <script type="text/javascript" src="https://cloudflare.com"></script>
   <script type="text/javascript">
     $(document).ready(function(){
       $('.slider').slick({
-        dots: false,
-        infinite: true,
-        speed: 450,
-        slidesToShow: 1,      /* মোবাইলে অবিকল অ্যাপল টিভির মতো ১টি করে ফুল লম্বা পোস্টার দেখাবে */
-        slidesToScroll: 1,
-        autoplay: true,       /* স্বয়ংক্রিয়ভাবে ডান-বামে স্ক্রোল হবে */
-        autoplaySpeed: 2800,
-        arrows: false
+        dots: false, infinite: true, speed: 500, slidesToShow: 1, slidesToScroll: 1,
+        autoplay: true, autoplaySpeed: 2800, arrows: false
       });
     });
   </script>
@@ -711,5 +676,5 @@ pure_minimal_carousel_html += """
 </html>
 """
 
-# ৩. ৫৪০ হাইট দিয়ে স্ট্রিমলিটের ফ্রেমে রেন্ডার করা হলো
-components.html(pure_minimal_carousel_html, height=540, scrolling=False)
+# ⚡ টার্মিনালের এরর ফিক্স করে লেটেস্ট 'st.iframe' প্রোটোকল দিয়ে রেন্ডার করা হলো
+st.iframe(srcdoc=sovereign_carousel_html, height=580, scrolling=False)
