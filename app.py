@@ -254,26 +254,140 @@ else:
         st.rerun()
         selected_company = st.sidebar.text_input("Enter Enterprise Tenant Name:", value="Apple Inc.", key="tenant_selector")
 
-    st.markdown("<div class='bugatti-script-title'>FinOps Platform</div>", unsafe_allow_html=True)
-    st.markdown("<div class='bugatti-sub-header'>Autonomous FinOps & Cloud Governance</div>", unsafe_allow_html=True)
+    st.markdown("""
+    <!-- ১. পুরো ড্যাশবোর্ডের গাম্ভীর্যপূর্ণ ব্যাকগ্রাউন্ড ও কাস্টম স্ক্রলবার সিএসএস -->
+    <style>
+        .stApp {
+            background-color: #0B2316 !important; /* বিশ্বের সবচেয়ে দামি ও লাক্সারিয়াস ডার্ক রেসিং গ্রিন */
+            background-image: radial-gradient(circle at 50% 30%, #113320 0%, #06130B 100%) !important;
+        }
+        /* সাইডবার মেনুকেও রাজকীয় থিমে রূপান্তর */
+        [data-testid="stSidebar"] {
+            background-color: #06130B !important;
+            border-right: 1px solid rgba(212, 175, 55, 0.15) !important;
+        }
+    </style>
+
+    <!-- ২. রোলেক্স ওয়াচেস স্টাইলে ফিনঅপস প্ল্যাটফর্ম টাইটেল -->
+    <div style="text-align: left; margin-bottom: 2px; padding-top: 10px;">
+        <p style="font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+                  font-size: 11px;
+                  font-weight: 500;
+                  letter-spacing: 7px;
+                  color: #AA9150; /* রোলেক্সের সিগনেচার স্যাটেল গোল্ড */
+                  text-transform: uppercase;
+                  margin: 0;
+                  padding: 0;
+                  opacity: 0.9;">
+            FinOps Platform
+        </p>
+    </div>
+
+    <!-- ৩. দ্য রোলেক্স কালেকশন স্টাইলে মেইন সাব-টাইটেল -->
+    <div style="text-align: left; margin-bottom: 30px;">
+        <h1 style="font-family: 'Playfair Display', 'Cinzel', serif;
+                   font-size: 38px;
+                   font-weight: 600;
+                   letter-spacing: 0.5px;
+                   color: #FFFFFF; /* বিশুদ্ধ এলিভেটেড হোয়াইট */
+                   margin: 5px 0 0 0;
+                   padding: 0;
+                   line-height: 1.2;">
+            Autonomous FinOps & Cloud Governance
+        </h1>
+    </div>
+""", unsafe_allow_html=True)
+
     st.markdown("---")
 
-    st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
-    st.markdown("### Step 1: Provide Cloud Spend Data")
-    uploaded_file = st.file_uploader("Upload your Cloud Spend CSV file (Supports up to 5 GB)", type=["csv"])
+    # =======================================================================
+    # ১. প্রথম অংশ: পাটেক ফিলিপ স্টাইলে ডেটা ইনজেশন পাইপলাইন এবং সাব-টাইটেল
+    # =======================================================================
+    st.markdown("""
+        <div style="text-align: center; margin-top: 35px; margin-bottom: 5px;">
+            <h2 style="font-family: 'Cinzel', 'Playfair Display', serif;
+                    font-size: 21px;
+                    font-weight: 300;
+                    letter-spacing: 7px;
+                    color: #D4AF37; /* পাটেক ফিলিপ সফট গোল্ড */
+                    text-transform: uppercase;
+                    margin: 0; padding: 0;">
+                DATA INGESTION PIPELINE
+            </h2>
+        </div>
+        <div style="text-align: center; margin-bottom: 25px;">
+            <p style="font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+                    font-size: 12px;
+                    font-weight: 400;
+                    letter-spacing: 3px;
+                    color: #FFFFFF;
+                    opacity: 0.65; /* অত্যন্ত মার্জিত ও নিখুঁত ভিজিবিলিটি */
+                    text-transform: uppercase;
+                    margin: 0; padding: 0;">
+                Upload Sovereign Cloud Telemetry Ledger (Supports up to 5 GB)
+            </p>
+        </div>
+    """, unsafe_allow_html=True)
+
+    # তোমার পুরোনো ফাইল আপলোডার কোড (২৬৩ ও ২৬৪ নম্বর লাইন যেভাবে ছিল)
+    uploaded_file = st.file_uploader("", type=["csv"], label_visibility="collapsed")
+
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
         st.session_state['cloud_data'] = df
-        st.success("✅ CSV File Uploaded Successfully!")
+        st.success("CSV File Uploaded Successfully!")
         st.dataframe(df, use_container_width=True)
-    st.markdown("</div>", unsafe_allow_html=True)
 
-    st.markdown("<div class='luxury-container'>", unsafe_allow_html=True)
-    st.markdown("### Live Cloud Integration (AWS/Azure Simulation)")
-    st.caption("Fortune 500 company admins can link their live infrastructure here.")
 
-    aws_key = st.text_input("Enter AWS Access Key ID:", type="password", placeholder="AKIAIOSFODNN7EXAMPLE")
-    aws_secret = st.text_input("Enter AWS Secret Access Key:", type="password", placeholder="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY")
+    # =======================================================================
+    # ২. দ্বিতীয় অংশ: পাটেক ফিলিপ স্টাইলে ক্লাউড গেটওয়ে এবং ইনপুট ডিজাইন
+    # =======================================================================
+    st.markdown("""
+        <div style="text-align: center; margin-top: 55px; margin-bottom: 5px;">
+            <h2 style="font-family: 'Cinzel', 'Playfair Display', serif;
+                    font-size: 21px;
+                    font-weight: 300;
+                    letter-spacing: 7px;
+                    color: #D4AF37;
+                    text-transform: uppercase;
+                    margin: 0; padding: 0;">
+                SOVEREIGN INFRASTRUCTURE GATEWAY
+            </h2>
+        </div>
+        <div style="text-align: center; margin-bottom: 35px;">
+            <p style="font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+                    font-size: 11px;
+                    font-weight: 400;
+                    letter-spacing: 3px;
+                    color: #FFFFFF;
+                    opacity: 0.65;
+                    text-transform: uppercase;
+                    margin: 0; padding: 0;">
+                Fortune 500 Cryptographic Environment Access Portals
+            </p>
+        </div>
+        
+        <!-- ইনপুট ফিল্ডের লেবেলগুলোকে বিশ্বের সবচেয়ে দামি ও লাক্সারি গোল্ডেন ডিজাইন দেওয়ার কাস্টম সিএসএস -->
+        <style>
+            .lux-label {
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: 11px !important;
+                font-weight: 500 !important;
+                letter-spacing: 4px !important;
+                color: #AA9150 !important; /* রোলেক্স/পাটেক ম্যাট গোল্ড */
+                text-transform: uppercase !important;
+                margin-bottom: 8px !important;
+                margin-top: 15px !important;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # কাস্টম লাক্সারি লেবেল এবং সম্পূর্ণ ব্ল্যাঙ্ক ইনপুট বক্স (Placeholder ক্লিয়ার করা হয়েছে)
+    st.markdown('<p class="lux-label">ENTER AWS ACCESS KEY ID</p>', unsafe_allow_html=True)
+    aws_key = st.text_input("", type="password", placeholder="", key="lux_aws_key", label_visibility="collapsed")
+
+    st.markdown('<p class="lux-label">ENTER AWS SECRET ACCESS KEY</p>', unsafe_allow_html=True)
+    aws_secret = st.text_input("", type="password", placeholder="", key="lux_aws_secret", label_visibility="collapsed")
 
     if st.button("Connect & Fetch Live Cloud Data", use_container_width=True):
         if aws_key and aws_secret:
