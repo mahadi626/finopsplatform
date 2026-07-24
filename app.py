@@ -207,8 +207,8 @@ if not st.session_state['logged_in']:
     # স্ক্রিন ২: সবচেয়ে লাক্সারিয়াস লগইন ড্যাশবোর্ড (ফিক্সড ৩টি বাটন ও ইনপুট সিকোয়েন্স)
     # ------------------------------------------------------------------
     elif st.session_state.ui_stage == 'secure_login_gate':
-        st.markdown("<h1 class='lux-main-title'>FORTUNE GLOBAL 500<br>SECURE GATEWAY</h1>", unsafe_allow_html=True)
-        st.markdown("<p class='lux-main-subtitle'>AUTONOMOUS FINOPS & CLOUD GOVERNANCE INFRASTRUCTURE VER 3.0</p>", unsafe_allow_html=True)
+        st.markdown("<h1 class='lux-main-title'>VANGUARD SOVEREIGN</h1>", unsafe_allow_html=True)
+        st.markdown("<p class='lux-main-subtitle'> Secure Institutional Gateway </p>", unsafe_allow_html=True)
         
         col1, col2, col3 = st.columns([1, 1.4, 1])
         with col2:
@@ -245,8 +245,110 @@ if not st.session_state['logged_in']:
                     st.success(f"Sovereign Gateway Decrypted. Session token initiated.")
                     st.session_state['logged_in'] = True
                     st.rerun()
-
-
+                    # 👑 ১. লাক্সারিয়াস লোগো ও কাউন্সিল ফুটার সেকশন
+        st.markdown("<br><br><hr style='border: 0; height: 1px; background: linear-gradient(to right, rgba(212,175,55,0), rgba(212,175,55,0.4), rgba(212,175,55,0)); margin-bottom: 40px;'>", unsafe_allow_html=True)
+        
+        luxury_footer_final = """
+        <style>
+            @import url('https://googleapis.com');
+            
+            .vanguard-footer {
+                font-family: 'Cinzel', serif;
+                color: #8C8C8C;
+                padding: 50px 30px;
+                background: rgba(10, 16, 26, 0.45);
+                border: 1px solid rgba(212, 175, 55, 0.05);
+                border-radius: 16px;
+                backdrop-filter: blur(10px);
+                margin-top: 50px;
+            }
+            .social-container {
+                display: flex;
+                justify-content: center;
+                gap: 50px;
+                margin-bottom: 45px;
+                padding-bottom: 25px;
+                border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+            }
+            .social-icon-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            }
+            .social-icon-btn svg {
+                width: 24px;
+                height: 24px;
+                fill: #8C8C8C;
+                transition: fill 0.4s ease, filter 0.4s ease;
+            }
+            .social-icon-btn:hover svg {
+                fill: #D4AF37;
+                filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+            }
+            .social-icon-btn:hover {
+                transform: translateY(-3px);
+            }
+            .footer-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 40px;
+                margin-bottom: 50px;
+            }
+            .footer-col h5 {
+                color: #D4AF37;
+                font-size: 12px;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                margin-bottom: 25px;
+                font-weight: 600;
+            }
+            .footer-col ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            .footer-col ul li {
+                font-family: 'Inter', sans-serif;
+                font-size: 12px;
+                letter-spacing: 0.5px;
+                margin-bottom: 14px;
+                color: #6C727E;
+                transition: color 0.3s ease;
+            }
+            .footer-col ul li:hover {
+                color: #FFFFFF;
+                cursor: pointer;
+            }
+            .footer-bottom {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 11px;
+                color: #555861;
+            }
+            .brand-segment {
+                font-weight: 600;
+                color: #D4AF37;
+                letter-spacing: 3px;
+            }
+        </style>
+        
+        <div class="vanguard-footer">
+            <div class="social-container">
+                <a class="social-icon-btn" href="https://x.com" target="_blank" title="X (Twitter)">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a class="social-icon-btn" href="https://microsoft.com" target="_blank" title="Microsoft">
+                    <svg viewBox="0 0 23 23"><path d="M0 0h11v11H0zM12 0h11v11H12zM0 12h11v11H0zM12 12h11v11H12z"/></svg>
+                </a>
+                <a class="social-icon-btn" href="https://apple.com" target="_blank" title="Apple">
+                    <svg viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.04-1.84-14.1-5.94-3.73-3.08-7.77-7.91-12.14-14.5C29.73 134.11 22.1 118.8 17.1 94.13c-5.01-24.67-1.89-44.59 9.35-59.74 6.21-8.35 13.62-12.63 22.25-12.85 4.31-.03 9.33 1.25 15.06 3.84 5.73 2.59 9.53 3.89 11.41 3.89 1.48 0 5.48-1.35 11.98-4.04 6.51-2.69 11.75-3.9 15.72-3.62 14.65.98 25.43 6.69 32.32 17.15-13.5 8.23-20.1 19.34-19.8 33.34.33 11.16 4.38 20.35 12.14 27.57 7.76 7.22 17 11.22 27.71 11.99-2.44 6.8-5.74 13.67-9.87 20.61zm-21.73-108c0 7.82-2.83 14.93-8.51 21.35-5.67 6.41-12.56 10.37-20.65 11.89.13-1.63.2-2.92.2-3.86 0-7.39 2.92-14.52 8.76-21.41 5.84-6.88 12.8-11.02 20.89-12.4 1.11 8.35-.69 16.5-5.69 24.43z"/></svg>
+                </a>
+            </div>
+            """
+        st.markdown(luxury_footer_final, unsafe_allow_html=True)
 
 else:
     if st.sidebar.button("Logout ", use_container_width=True):
